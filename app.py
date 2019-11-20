@@ -116,7 +116,7 @@ def show_fsm():
 
 
 @app.route("/test1", methods=["POST"])
-def callback():
+def test1():
     signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
