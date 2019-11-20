@@ -115,7 +115,7 @@ def show_fsm():
     return send_file("fsm.png", mimetype="image/png")
 
 
-"""@app.route("/test1", methods=["POST"])
+@app.route("/test1", methods=["POST"])
 def callback():
     signature = request.headers["X-Line-Signature"]
     # get request body as text
@@ -140,7 +140,7 @@ def callback():
         )
 
     return "OK"
-"""
+
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
