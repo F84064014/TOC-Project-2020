@@ -1,12 +1,13 @@
 import os
 import sys
-import json'''test'''
+import json # test
 
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from twython import Twython # test
 
 from fsm import TocMachine
 from utils import send_text_message
@@ -24,6 +25,19 @@ credentials['ACCESS_SECRET'] = SDsS6MDbJd5Ltq0Pd4dhFZ0FGrR2ZVd1jPS7G0a1yRyKi
 # Save the credentials object to file
 with open("twitter_credentials.json", "w") as file:
     json.dump(credentials, file)
+
+    t = Twython(app_key=TWITTER_APP_KEY, 
+            app_secret=TWITTER_APP_KEY_SECRET, 
+            oauth_token=TWITTER_ACCESS_TOKEN, 
+            oauth_token_secret=TWITTER_ACCESS_TOKEN_SECRET)
+
+search = t.search(q='#omg',   #**supply whatever query you want here**
+                  count=100)
+
+tweets = search['statuses']
+
+for tweet in tweets:
+  print tweet['id_str'], '\n', tweet['text'], '\n\n\n'
 #=============
 
 machine = TocMachine(
