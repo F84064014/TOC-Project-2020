@@ -1,5 +1,6 @@
 import os
 import sys
+import json'''test'''
 
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
@@ -12,6 +13,18 @@ from utils import send_text_message
 
 load_dotenv()
 
+#=============
+# Enter your keys/secrets as strings in the following fields
+credentials = {}
+credentials['CONSUMER_KEY'] = Kxa25WZXCXC9gmcKhxtl0H8w7
+credentials['CONSUMER_SECRET'] = pf2Atz8hTE4D0vUzOmUB0ibN7am8tl5tfHFA9MyAqQOD0Pr6mj
+credentials['ACCESS_TOKEN'] = 1185380148058587137-GgHLnx9DwxOI4n8cxqtxqrUUkQ0aCf 
+credentials['ACCESS_SECRET'] = SDsS6MDbJd5Ltq0Pd4dhFZ0FGrR2ZVd1jPS7G0a1yRyKi
+
+# Save the credentials object to file
+with open("twitter_credentials.json", "w") as file:
+    json.dump(credentials, file)
+#=============
 
 machine = TocMachine(
     states=["user", "state1", "state2"],
