@@ -19,7 +19,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state1")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "state1 is gay return")
+        send_text_message(reply_token, "Trigger state1")
         self.go_back()
 
     def on_exit_state1(self):
@@ -29,7 +29,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state2")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "state2 is gay return")
+        send_text_message(reply_token, "Trigger state2")
         self.go_back()
 
     def on_exit_state2(self):
