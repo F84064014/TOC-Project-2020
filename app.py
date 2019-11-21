@@ -1,10 +1,5 @@
 import os
 import sys
-#===============
-import requests
-import re
-#==============
-
 
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
@@ -122,14 +117,7 @@ def show_fsm():
 
 @app.route("/test1", methods=["POST"])
 def test1():
-    url = 'https://www.dcard.tw/f'
-   headers = {'User-Agent'：'Mozilla / 5.0（Windows NT 10.0; Win64; x64）AppleWebKit / 537.36（KHTML，與Gecko一樣）Chrome / 70.0.3538.102 Safari / 537.36'} 
-resp = requests.get（url，headers = headers）
 
-#soup = BeautifulSoup（resp.text，'html.parser'）
-#dcard_title = soup.find_all（'h3'，re.compile（'PostEntry_title_'））
-
-    
     signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
