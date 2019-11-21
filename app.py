@@ -2,7 +2,7 @@ import os
 import sys
 #===============
 import requests
-#from bs4 import BeautifulSoup
+
 import re
 #==============
 
@@ -16,7 +16,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from fsm import TocMachine
 from utils import send_text_message
 
-
+from base64 import BeautifulSoup（resp
 load_dotenv()
 
 
