@@ -14,31 +14,6 @@ from utils import send_text_message
 
 load_dotenv()
 
-#=============
-# Enter your keys/secrets as strings in the following fields
-credentials = {}
-credentials['CONSUMER_KEY'] = Kxa25WZXCXC9gmcKhxtl0H8w7
-credentials['CONSUMER_SECRET'] = pf2Atz8hTE4D0vUzOmUB0ibN7am8tl5tfHFA9MyAqQOD0Pr6mj
-credentials['ACCESS_TOKEN'] = 1185380148058587137-GgHLnx9DwxOI4n8cxqtxqrUUkQ0aCf 
-credentials['ACCESS_SECRET'] = SDsS6MDbJd5Ltq0Pd4dhFZ0FGrR2ZVd1jPS7G0a1yRyKi
-
-# Save the credentials object to file
-#with open("twitter_credentials.json", "w") as file:
-#    json.dump(credentials, file)
-
-#    t = Twython(app_key=TWITTER_APP_KEY, 
-#            app_secret=TWITTER_APP_KEY_SECRET, 
-#            oauth_token=TWITTER_ACCESS_TOKEN, 
-#            oauth_token_secret=TWITTER_ACCESS_TOKEN_SECRET)
-
-#search = t.search(q='#omg',   #**supply whatever query you want here**
-#                  count=100)
-
-#tweets = search['statuses']
-
-#for tweet in tweets:
-#  print tweet['id_str'], '\n', tweet['text'], '\n\n\n'
-#=============
 
 machine = TocMachine(
     states=["user", "state1", "state2"],
