@@ -140,7 +140,7 @@ def test1():
             event.reply_token, TextSendMessage(event.message.text)
         )
     machine.get_graph().draw("fsm.png", prog="dot", format="png")
-    return send_file("fsm.png", mimetype="image/png")
+    send_file("fsm.png", mimetype="image/png")
 
     return "OK"
 
