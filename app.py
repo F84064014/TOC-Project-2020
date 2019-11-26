@@ -140,10 +140,10 @@ def test1():
             event.reply_token, TextSendMessage(text=dcard_title)
         )
 
-def show_fsm():
-    machine.get_graph().draw("fsm.png", prog="dot", format="png")
-    return send_file("fsm.png", mimetype="image/png")
-    #return "OK"
+#def show_fsm():
+ #   machine.get_graph().draw("fsm.png", prog="dot", format="png")
+  #  return send_file("fsm.png", mimetype="image/png")
+    return "OK"
 
 
 if __name__ == "__main__":
