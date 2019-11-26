@@ -139,6 +139,7 @@ def test1():
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(event.message.text)
         )
+        show_fsm()
 
     return "OK"
 
