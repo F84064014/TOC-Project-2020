@@ -10,6 +10,10 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSend
 from fsm import TocMachine
 from utils import send_text_message
 
+import requests
+url = 'https://www.dcard.tw/f'
+resp = requests.get(url)
+
 load_dotenv()
 
 
