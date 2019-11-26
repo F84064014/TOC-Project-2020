@@ -117,7 +117,7 @@ def show_fsm():
 
 @app.route("/test1", methods=["POST"])
 def test1():
-
+    def callback():
     signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
@@ -137,12 +137,9 @@ def test1():
             continue
 
         line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text=dcard_title)
+            event.reply_token, TextSendMessage(text=event.message.text)
         )
 
-#def show_fsm():
- #   machine.get_graph().draw("fsm.png", prog="dot", format="png")
-  #  return send_file("fsm.png", mimetype="image/png")
     return "OK"
 
 
