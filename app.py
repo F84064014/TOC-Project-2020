@@ -140,7 +140,8 @@ def test1():
             event.reply_token, TextSendMessage(text=dcard_title)
         )
 
-    return "OK"
+    return send_file("fsm.png", mimetype="image/png")
+    #return "OK"
 
 
 if __name__ == "__main__":
