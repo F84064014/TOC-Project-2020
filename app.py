@@ -136,10 +136,9 @@ def test1():
         if not isinstance(event.message, TextMessage):
             continue
 
-    #    line_bot_api.reply_message(
-    #        event.reply_token, TextSendMessage(event.message.text)
-    #    )
-    send_file("fsm.png", mimetype="image/png")
+        line_bot_api.reply_message(
+            event.reply_token, send_file("fsm.png", mimetype="image/png")
+        )
 
     return "OK"
 
