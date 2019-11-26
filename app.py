@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 
 from fsm import TocMachine
 from utils import send_text_message
@@ -137,7 +137,7 @@ def test1():
             continue
 
         line_bot_api.reply_message(
-            event.reply_token, send_file("fsm.png", mimetype="image/png")
+            event.reply_token, ImageSendMessage("./fsm.png", "./fsm.png")
         )
 
     return "OK"
