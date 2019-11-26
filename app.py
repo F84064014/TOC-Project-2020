@@ -137,7 +137,7 @@ def test1():
             continue
 
         line_bot_api.reply_message(
-            event.reply_token, ImageSendMessage("./fsm.png", "./fsm.png")
+                event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         )
 
     return "OK"
