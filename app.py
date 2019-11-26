@@ -137,7 +137,7 @@ def test1():
             continue
 
         line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text=dcard_title)
+            event.reply_token, TextSendMessage(event.message.text)
         )
 
     return "OK"
