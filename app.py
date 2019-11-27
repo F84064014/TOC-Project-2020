@@ -13,8 +13,10 @@ from utils import send_text_message
 import requests
 from bs4 import BeautifulSoup
 import re
-url = 'https://www.dcard.tw/f'
+url = 'https://tw.yahoo.com/'
 resp = requests.get(url)
+soup = BeautifulSoup(resp.text, 'html.parser')
+stories = soup.find_all('h3', class_='story-title')
 
 load_dotenv()
 
@@ -124,9 +126,6 @@ def show_fsm():
 @app.route("/test1", methods=["POST"])
 def test1():
 
-    soup = BeautifulSoup(resp.text, 'html.parser')
-    dcard_title = soup.find_all('h3',re.compile('PostEntry_title_'))
-
     signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
@@ -145,8 +144,9 @@ def test1():
         if not isinstance(event.message, TextMessage):
             continue
 
+    for s in stories:
         line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text=dcard_title)
+                event.reply_token, TextSendMessage(s.text)
         )
         line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
