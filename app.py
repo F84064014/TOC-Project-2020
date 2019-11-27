@@ -124,6 +124,9 @@ def show_fsm():
 @app.route("/test1", methods=["POST"])
 def test1():
 
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    dcard_title = soup.find_all('h3',re.compile('PostEntry_title_'))
+
     signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
@@ -143,10 +146,10 @@ def test1():
             continue
 
         line_bot_api.reply_message(
-                event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
+                event.reply_token, TextSendMessage(text=dcard_title)
         )
         line_bot_api.reply_message(
-                event.reply_token, send_file("fsm.png", mimetype="image/png")
+                event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         )
 
     return "OK"
