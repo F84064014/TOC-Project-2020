@@ -15,6 +15,7 @@ line-bot-sdk = "==1.14.0"
 Flask = "==1.0.2"
 requests = "*"
 request = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.6"
