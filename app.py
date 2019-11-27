@@ -144,12 +144,12 @@ def test1():
         if not isinstance(event.message, TextMessage):
             continue
 
+        line_bot_api.reply_message(
+                event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
+        )
     for s in stories:
         line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(s.text)
-        )
-        line_bot_api.reply_message(
-                event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         )
 
     return "OK"
