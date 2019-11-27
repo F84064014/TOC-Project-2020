@@ -143,14 +143,13 @@ def test1():
         line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         )
-        url = 'https://tw.yahoo.com/'
-        resp = requests.get(url)
+        resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
-    for s in stories:
-        line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text = s.text)
-        )
+        for s in stories:
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text = s.text)
+            )
 
     return "OK"
 
