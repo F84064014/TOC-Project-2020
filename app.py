@@ -146,7 +146,7 @@ def test1():
         url = 'https://tw.yahoo.com/'
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        stories = soup.find_all('h3', class_='story-title')
+        stories = soup.find_all('a', class_='story-title')
     for s in stories:
         line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(s.text)
