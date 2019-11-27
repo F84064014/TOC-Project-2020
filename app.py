@@ -145,6 +145,9 @@ def test1():
         line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         )
+        line_bot_api.reply_message(
+                event.reply_token, send_file("fsm.png", mimetype="image/png")
+        )
 
     return "OK"
 
