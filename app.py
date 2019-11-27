@@ -13,10 +13,6 @@ from utils import send_text_message
 import requests
 from bs4 import BeautifulSoup
 import re
-url = 'https://tw.yahoo.com/'
-resp = requests.get(url)
-soup = BeautifulSoup(resp.text, 'html.parser')
-stories = soup.find_all('h3', class_='story-title')
 
 load_dotenv()
 
@@ -147,6 +143,10 @@ def test1():
         line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         )
+        url = 'https://tw.yahoo.com/'
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        stories = soup.find_all('h3', class_='story-title')
     for s in stories:
         line_bot_api.reply_message(
                 event.reply_token, TextSendMessage(s.text)
