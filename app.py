@@ -11,7 +11,6 @@ from fsm import TocMachine
 from utils import send_text_message
 
 import requests
-from BeautifulSoup import BeautifulSoup
 import re
 url = 'https://www.dcard.tw/f'
 resp = requests.get(url)
