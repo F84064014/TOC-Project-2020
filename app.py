@@ -146,12 +146,12 @@ def test1():
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
-        send_text_message(event.reply_token, stories.text)
-        for s in stories:
-            send_text_message(event.reply_token, s.text)
-            #line_bot_api.reply_message(
-            #        event.reply_token, TextSendMessage(text = 'hi')#s.text)
-            #)
+        #send_text_message(event.reply_token, stories.text)
+       # for s in stories:
+           # send_text_message(event.reply_token, s.text)
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text = 'hi')#s.text)
+            )
 
     return "OK"
 
