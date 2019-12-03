@@ -149,9 +149,9 @@ def test1():
         #send_text_message(event.reply_token, stories.text)
        # for s in stories:
            # send_text_message(event.reply_token, s.text)
-            line_bot_api.reply_message(
-                    event.reply_token, TextSendMessage(text = 'hi')#s.text)
-            )
+        line_bot_api.reply_message(
+                event.reply_token, TextSendMessage(text = 'hi')#s.text)
+        )
 
     return "OK"
 
