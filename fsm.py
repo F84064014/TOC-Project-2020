@@ -44,6 +44,8 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
         send_text_message(reply_token, "Yo nigga")
+        machine.get_graph().draw("fsm.png", prog="dot", format="png")
+        send_file("fsm.png", mimetype="image/png")
         self.go_back()
 
     def on_exit_state3(self):
