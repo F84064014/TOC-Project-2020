@@ -54,7 +54,7 @@ class TocMachine(GraphMachine):
         for s in stories:
             a.append(s.text)
         reply_token = event.reply_token
-        send_text_message(reply_token, a[rand.randint(0, len(a))])
+        send_text_message(reply_token, a[rand.randint(0, 10)])
             #line_bot_api.reply_message(
             #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
             #)
