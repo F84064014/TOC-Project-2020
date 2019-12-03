@@ -23,10 +23,6 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "go to nigga state"
 
-    def return_to_user(self, event):
-        text = event.message.text
-        return text.lower() == "return to user"
-
     def on_enter_state1(self, event):
         print("I'm entering state1")
 
@@ -55,7 +51,7 @@ class TocMachine(GraphMachine):
         stories = soup.find_all('a', class_='story-title')
         for s in stories:
             reply_token = event.reply_token
-            send_text_message(reply_token, "Yo nigga")
+            send_text_message(reply_token, text=s.text)
             #line_bot_api.reply_message(
             #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
             #)
