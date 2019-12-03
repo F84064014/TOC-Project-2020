@@ -17,3 +17,5 @@ for s in stories:
     a.append(s.text)
 print(a[random.randint(0,10)])
 
+#https://must-be-lower-case.herokuapp.com/webhook
+
