@@ -2,6 +2,10 @@ from transitions.extensions import GraphMachine
 
 from utils import send_text_message
 
+import requests
+from bs4 import BeautifulSoup
+import re
+
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -49,7 +53,6 @@ class TocMachine(GraphMachine):
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
-        #send_text_message(event.reply_token, stories.text)
         for s in stories:
             line_bot_api.reply_message(
                     event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
