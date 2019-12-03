@@ -148,6 +148,9 @@ def test1():
             line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text = s.text)
             )
+            line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text = s.get('href'))
+            )
         line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         )
