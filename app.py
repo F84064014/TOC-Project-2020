@@ -42,7 +42,7 @@ machine = TocMachine(
             "trigger": "go_back", 
             "source": ["state1", "state2", "state3"], 
             "dest": "user"
-            "conditions": "return_to_user",
+            #"conditions": "return_to_user",
         },
     ],
     initial="user",
