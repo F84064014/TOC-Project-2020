@@ -147,7 +147,7 @@ def test1():
        # for s in stories:
            # send_text_message(event.reply_token, s.text)
         line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text = 'hi')#s.text)
+                event.reply_token, TextSendMessage(text = s.text)
         )
         line_bot_api.reply_message(
                 event.reply_token, ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
