@@ -54,11 +54,11 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
         for s in stories:
-            line_bot_api.reply_message(
-                    event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
-            )
-        #reply_token = event.reply_token
-        #send_text_message(reply_token, "Yo nigga")
+            reply_token = event.reply_token
+            send_text_message(reply_token, "Yo nigga")
+            #line_bot_api.reply_message(
+            #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
+            #)
         self.go_back()
 
     def on_exit_state3(self):
