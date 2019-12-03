@@ -49,9 +49,11 @@ class TocMachine(GraphMachine):
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
+        a = list()
         for s in stories:
-            reply_token = event.reply_token
-            send_text_message(reply_token, text=s.text)
+            a.append(s.text)
+        reply_token = event.reply_token
+        send_text_message(reply_token, a[2])
             #line_bot_api.reply_message(
             #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
             #)
