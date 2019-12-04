@@ -62,7 +62,6 @@ class TocMachine(GraphMachine):
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
         send_text_message(reply_token, title[rand_title])
-        self.go_s4()
         #send_text_message(reply_token, title_url[rand_title])
             #line_bot_api.reply_message(
             #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
