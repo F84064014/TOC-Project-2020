@@ -62,6 +62,7 @@ class TocMachine(GraphMachine):
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
         send_text_message(reply_token, title[rand_title])
+        send_text_message(reply_token, title[rand_title])
 
 
     def on_exit_state3(self):
