@@ -62,20 +62,16 @@ class TocMachine(GraphMachine):
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
         send_text_message(reply_token, title[rand_title])
-        #send_text_message(reply_token, title_url[rand_title])
-            #line_bot_api.reply_message(
-            #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
-            #)
         #self.go_back()
 
     def on_exit_state3(self):
         print("Leaving state3")
 
     def on_enter_state4(self, event):
-        print("I;m entering state4")
+        print("I'm entering state4")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "tit")
+        send_text_message(reply_token, 'tit')
         self.go_back()
 
     def on_exit_state4(self):
