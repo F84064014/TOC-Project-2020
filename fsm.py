@@ -24,6 +24,10 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "go to nigga state"
 
+    def is_going_to_state4(self, event):
+        text = event.message.text
+        return text.lower() == "go to exnigga state"
+
     def on_enter_state1(self, event):
         print("I'm entering state1")
 
