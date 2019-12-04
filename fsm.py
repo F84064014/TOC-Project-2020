@@ -67,7 +67,7 @@ class TocMachine(GraphMachine):
             #line_bot_api.reply_message(
             #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
             #)
-        self.go_back()
+        #self.go_back()
 
     def on_exit_state3(self):
         print("Leaving state3")
