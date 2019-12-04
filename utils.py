@@ -15,7 +15,7 @@ def send_text_message(reply_token, text):
 
 def send_two_message(reply_token, text1, text2):
     line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(reply_token, [TextSendMessage(text=text1), TextSendMessage(text=text2)])
+    line_bot_api.reply_message(reply_token, [TextSendMessage(text1=text1), TextSendMessage(text2=text2)])
 """
 def send_image_url(id, img_url):
     pass
