@@ -62,8 +62,7 @@ class TocMachine(GraphMachine):
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
         send_text_message(reply_token, title[rand_title])
-
-        send_text_message(reply_token, title[rand_title])
+        send_text_message(reply_token, title_url[rand_title])
 
 
     def on_exit_state3(self):
@@ -74,6 +73,7 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state4")
+        self.go_back()
 
     def on_exit_state4(self):
         print("Leaving state4")
