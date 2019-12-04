@@ -58,7 +58,7 @@ class TocMachine(GraphMachine):
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
         send_text_message(reply_token, title[rand_title])
-        send_text_message(reply_token, title_url[rand_title])
+        self.go_s4()
         #send_text_message(reply_token, title_url[rand_title])
             #line_bot_api.reply_message(
             #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
@@ -67,3 +67,20 @@ class TocMachine(GraphMachine):
 
     def on_exit_state3(self):
         print("Leaving state3")
+
+    def on_enter_state4(self, event):
+        print("I;m entering state4")
+
+        resp = requests.get('https://tw.yahoo.com/')
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        stories = soup.find_all('a', class_='story-title')
+        title = list()
+        title_url = list()
+        for s in stories:
+            title.append(s.text)
+            title_url.append(s.get('href'))
+        rand_title = random.randint(0, len(title))
+        reply_token = event.reply_token
+        send_text_message(reply_token, title[rand_title])
+        self.go_back()
+
