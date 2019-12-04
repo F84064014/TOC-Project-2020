@@ -71,16 +71,10 @@ class TocMachine(GraphMachine):
     def on_enter_state4(self, event):
         print("I;m entering state4")
 
-        resp = requests.get('https://tw.yahoo.com/')
-        soup = BeautifulSoup(resp.text, 'html.parser')
-        stories = soup.find_all('a', class_='story-title')
-        title = list()
-        title_url = list()
-        for s in stories:
-            title.append(s.text)
-            title_url.append(s.get('href'))
-        rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
-        send_text_message(reply_token, title[rand_title])
+        send_text_message(reply_token, "tit")
         self.go_back()
+
+    def on_exit_state4(self):
+        print("Leaving state4")
 
