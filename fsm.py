@@ -61,11 +61,7 @@ class TocMachine(GraphMachine):
             title_url.append(s.get('href'))
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
-        #send_text_message(reply_token, title[rand_title])
-        line_bot_api = LineBotApi(channel_access_token)
-        line_bot_api.reply_message(
-                    event.reply_token, [TextSendMessage(text = title[rand_title]), TextSendMessage(text = title_url[rand_title])]
-        )
+        send_text_message(reply_token, title[rand_title])
 
 
     def on_exit_state3(self):
