@@ -43,7 +43,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state2")
 
         resp = requests.get('https://twitter.com/realDonaldTrump')
-        soup = BeautifulSoup(resp.text, 'html.parser')
+        soup = BeautifulSoup(resp.text, 'lxml')
         tweets = soup.find_all('li', {"data-item-type": "tweet"})
         tweets_list = list()
         for tweet in tweets:
