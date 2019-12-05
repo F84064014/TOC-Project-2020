@@ -5,6 +5,7 @@ from utils import send_text_message, send_two_message
 import requests
 from bs4 import BeautifulSoup
 import re
+import json
 import random
 
 
@@ -42,7 +43,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state2")
 
         resp = requests.get('https://twitter.com/realDonaldTrump')
-        soup = BeautifulSoup(resp.text, 'lxml')
+        #soup = BeautifulSoup(resp.text, 'lxml')
         #tweets = soup.find_all('li', {"data-item-type": "tweet"})
         #for tweet in tweets:
         #    tweet_data = None
