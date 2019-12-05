@@ -22,11 +22,11 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state3(self, event):
         text = event.message.text
-        return text.lower() == "go to state3"
+        return text.lower() == "news"
 
     def is_going_to_state4(self, event):
         text = event.message.text
-        return text.lower() == "go to state4"
+        return text.lower() == "exit"
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
