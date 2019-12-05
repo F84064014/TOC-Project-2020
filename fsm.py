@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, send_two_message
+from utils import send_text_message, send_two_message, func_test
 
 import requests
 from bs4 import BeautifulSoup
@@ -42,7 +42,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state2")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state2")
+        #func_test(reply_token, "Trigger state2")
         self.go_back()
 
     def on_exit_state2(self):
@@ -71,7 +71,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state4")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state4")
+        send_text_message(reply_token, "exit state")
         self.go_back()
 
     def on_exit_state4(self):
