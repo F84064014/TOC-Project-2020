@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 import re
 import json
 import random
-import sys
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
