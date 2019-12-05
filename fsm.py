@@ -45,9 +45,14 @@ class TocMachine(GraphMachine):
         resp = requests.get('https://twitter.com/realDonaldTrump')
         soup = BeautifulSoup(resp.text, 'html.parser')
         tweets = soup.find_all('li', {"data-item-type": "tweet"})
-        #for tweet in tweets:
-        #    tweet_data = None
-        #    tweet_data = 
+        tweets_list = list()
+        for tweet in tweets:
+            tweet_data = None
+            tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
+            tweet_data = tweet_text_box.text
+            if tweet_data:
+            tweets_list.append(tweet_data)
+
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state2")
         self.go_back()
