@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, send_two_message, func_test
+from utils import send_text_message, send_two_message
 
 import requests
 from bs4 import BeautifulSoup
