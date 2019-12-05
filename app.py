@@ -53,6 +53,12 @@ machine = TocMachine(
             "dest": "user"
             #"conditions": "return_to_user",
         },
+        {
+            "trigger": "advance",
+            "source": "state3",
+            "dest": "state3",
+            "conditions": "is_going_to_state3",
+        },
     ],
     initial="user",
     auto_transitions=False,
