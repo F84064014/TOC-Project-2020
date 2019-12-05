@@ -41,8 +41,11 @@ class TocMachine(GraphMachine):
     def on_enter_state2(self, event):
         print("I'm entering state2")
 
+        resp = requests.get('https://twitter.com/realDonaldTrump')
+        soup = BeautifulSoup(resp.text, 'lxml')
+        tweets = soup.find_all('li', {"data-item-type": "tweet"})
         reply_token = event.reply_token
-        send_text_test(reply_token, "Trigger state2")
+        send_text_message(reply_token, "Trigger state2")
         self.go_back()
 
     def on_exit_state2(self):
