@@ -43,16 +43,6 @@ def func_test(reply_token, username)
     line_bot_api = LineBotApi(channel_access_token)
     line_bot_api.reply_message(reply_token, "test not failed")
 
-
-def get_tweet_text(tweet):
-    tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
-    images_in_tweet_tag = tweet_text_box.find_all("a", {"class": "twitter-timeline-link u-hidden"})
-    tweet_text = tweet_text_box.text
-    for image_in_tweet_tag in images_in_tweet_tag:
-        tweet_text = tweet_text.replace(image_in_tweet_tag.text, '')
-
-    return tweet_text
-
 """
 def send_image_url(id, img_url):
     pass
