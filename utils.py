@@ -28,28 +28,21 @@ def func_test(reply_token, username)
     respone = None
     respone = request.get(url)
     soup = BeautifulSoup(respoonse.text, 'lxml')
-    tweets = get_tweets_data(username, soup)
-    line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(reply_token, "test not failed")
-
-def get_tweets_data(username, soup)
-    tweets_list = list()
-    tweets_list.extend(get_this_page_tweets(soup))
-
-def get_this_page_tweets(soup)
     tweets_list = list()
     tweets = soup.find_all("li", {"data-item-type": "tweet"})
     for tweet in tweets:
         tweet_data = None
         try:
-            tweet_data = get_tweet_text(tweet)
+            tweet_data  = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
         except Exception as e:
             continue #ignore if any loading or tweet err
 
         if tweet_data:
             tweets_list.append(tweet_data)
-            
-    return tweets_list
+    
+    line_bot_api = LineBotApi(channel_access_token)
+    line_bot_api.reply_message(reply_token, "test not failed")
+
 
 def get_tweet_text(tweet):
     tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
