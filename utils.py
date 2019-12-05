@@ -23,7 +23,7 @@ def send_two_message(reply_token, text1, text2):
 
     return "OK"
 
-def func_test(reply_token, username)
+"""def func_test(reply_token, username)
     url = "http://www.twitter.com/" + username
     respone = None
     respone = request.get(url)
@@ -45,7 +45,7 @@ def func_test(reply_token, username)
 
 return "OK"
 
-"""
+
 def send_image_url(id, img_url):
     pass
 
