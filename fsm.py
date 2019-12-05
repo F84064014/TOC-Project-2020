@@ -47,10 +47,10 @@ class TocMachine(GraphMachine):
         tweets = soup.find_all('li', {"data-item-type": "tweet"})
         for tweet in tweets:
             tweet_data = None
-            #tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
+            tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
             #tweet_data = tweet_text_box.text
             #if tweet_data:
-            tweets_list.append(tweet)
+            tweets_list.append(tweet_text_box.text)
 
         reply_token = event.reply_token
         send_text_message(reply_token, tweets_list[2])
