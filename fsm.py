@@ -50,8 +50,8 @@ class TocMachine(GraphMachine):
             tweet_data = None
             tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
             tweet_data = tweet_text_box.text
-            if tweet_data:
-            tweets_list.append(tweet_data)
+            #if tweet_data:
+            #tweets_list.append(tweet_data)
 
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger state2")
