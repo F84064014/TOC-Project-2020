@@ -18,7 +18,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state2(self, event):
         text = event.message.text
-        return text.lower() == "go to state2"
+        return text.lower() == "twitter"
 
     def is_going_to_state3(self, event):
         text = event.message.text
