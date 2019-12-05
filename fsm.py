@@ -52,8 +52,8 @@ class TocMachine(GraphMachine):
             #if tweet_data:
             tweets_list.append(tweet_text_box.text)
 
+        rand_tweet = random.randint(0, len(tweets_list))
         reply_token = event.reply_token
-        rand_tweet = random.randint(0, len(tweet_list))
         send_text_message(reply_token, tweets_list[rand_tweet])
         self.go_back()
 
