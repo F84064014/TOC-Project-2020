@@ -43,6 +43,8 @@ def func_test(reply_token, username)
     line_bot_api = LineBotApi(channel_access_token)
     line_bot_api.reply_message(reply_token, "test not failed")
 
+return "OK"
+
 """
 def send_image_url(id, img_url):
     pass
