@@ -23,28 +23,6 @@ def send_two_message(reply_token, text1, text2):
 
     return "OK"
 
-def func_test(reply_token, username)
-    url = "http://www.twitter.com/" + username
-    respone = None
-    respone = request.get(url)
-    soup = BeautifulSoup(respoonse.text, 'lxml')
-    tweets_list = list()
-    tweets = soup.find_all("li", {"data-item-type": "tweet"})
-    for tweet in tweets:
-        tweet_data = None
-        try:
-            tweet_data  = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
-        except Exception as e:
-            continue #ignore if any loading or tweet err
-
-        if tweet_data:
-            tweets_list.append(tweet_data)
-    
-    line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(reply_token, "test not failed")
-
-return "OK"
-
 """
 def send_image_url(id, img_url):
     pass

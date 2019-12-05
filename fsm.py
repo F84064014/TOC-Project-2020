@@ -42,7 +42,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state2")
 
         reply_token = event.reply_token
-        #func_test(reply_token, "Trigger state2")
+        send_text_test(reply_token, "Trigger state2")
         self.go_back()
 
     def on_exit_state2(self):
