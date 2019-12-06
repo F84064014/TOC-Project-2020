@@ -154,17 +154,17 @@ def test1():
     app.logger.info("Request body: " + body)
 
     # parse webhook body
-    try:
-        events = parser.parse(body, signature)
-    except InvalidSignatureError:
-        abort(400)
+    #try:
+    #    events = parser.parse(body, signature)
+    #except InvalidSignatureError:
+    #    abort(400)
 
     # if event is MessageEvent and message is TextMessage, then echo text
-    for event in events:
-        if not isinstance(event, MessageEvent):
-            continue
-        if not isinstance(event.message, TextMessage):
-            continue
+    #for event in events:
+    #    if not isinstance(event, MessageEvent):
+    #        continue
+    #    if not isinstance(event.message, TextMessage):
+    #        continue
     elif event.message.text == "Buttons Template":
         buttons_template = TemplateSendMessage(
         alt_text='Buttons Template',
