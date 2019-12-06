@@ -31,8 +31,13 @@ class TocMachine(GraphMachine):
     def on_enter_state1(self, event):
         print("I'm entering state1")
 
+        resp = requests.get('https://news.google.com/?hl=zh-TW&gl=TW&ceid=TW:zh-Hant')
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        st_divs = soup.find_all('div', {"class": "st"})
+        for st_div in st_divs
+            news_summaries.append(st_div.text)
         reply_token = event.reply_token
-        send_text_message(reply_token, "hello")
+        send_text_message(reply_token, news_summaries[2])
         self.go_back()
 
     def on_exit_state1(self):
