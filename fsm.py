@@ -47,11 +47,15 @@ class TocMachine(GraphMachine):
         tweets = soup.find_all('li', {"data-item-type": "tweet"})
         for tweet in tweets:
             tweet_data = None
-            tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
+            try:
+                tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
+            except Exception as e:
+                continue
             images_in_tweet_tag = tweet_text_box.find_all("a", {"class": "twitter-timeline-link u-hidden"})
             #for image_in_tweet_tag in images_in_tweet_tag:
             #    tweet_text_box = tweet_text_box.replace(images_in_tweet_tag.text, '')
-            tweets_list.append(tweet_text_box.text)
+            if tweet_text_box:
+                tweets_list.append(tweet_text_box.text)
 
         rand_tweet = random.randint(0, len(tweets_list))
         reply_token = event.reply_token
