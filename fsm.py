@@ -56,6 +56,7 @@ class TocMachine(GraphMachine):
         rand_tweet = random.randint(0, len(tweets_list))
         reply_token = event.reply_token
         send_text_message(reply_token, tweets_list[rand_tweet])
+        ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
         self.go_back()
 
     def on_exit_state2(self):
