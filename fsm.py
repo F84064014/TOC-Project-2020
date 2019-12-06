@@ -34,6 +34,7 @@ class TocMachine(GraphMachine):
         resp = requests.get('https://news.google.com/?hl=zh-TW&gl=TW&ceid=TW:zh-Hant')
         soup = BeautifulSoup(resp.text, 'html.parser')
         st_divs = soup.find_all('div', {"class": "st"})
+        news_summaries = list()
         for st_div in st_divs
             news_summaries.append(st_div.text)
         reply_token = event.reply_token
