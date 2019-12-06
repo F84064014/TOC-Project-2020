@@ -5,7 +5,8 @@ from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
+#from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
+from linebot.models import *
 
 from fsm import TocMachine
 from utils import send_text_message
@@ -151,7 +152,7 @@ def test1():
     signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
-    #app.logger.info("Request body: " + body)
+    app.logger.info("Request body: " + body)
 
     # parse webhook body
     #try:
