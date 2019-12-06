@@ -165,16 +165,32 @@ def test1():
             continue
         if not isinstance(event.message, TextMessage):
             continue
-
-        resp = requests.get('https://tw.yahoo.com/')
-        soup = BeautifulSoup(resp.text, 'html.parser')
-        stories = soup.find_all('a', class_='story-title')
-        #send_text_message(event.reply_token, stories.text)
-        for s in stories:
-            line_bot_api.reply_message(
-                    event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
-            )
-                #ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
+    elif event.message.text == "Buttons Template":
+        buttons_template = TemplateSendMessage(
+        alt_text='Buttons Template',
+        template=ButtonsTemplate(
+            title='這是ButtonsTemplate',
+            text='ButtonsTemplate可以傳送text,uri',
+            thumbnail_image_url='顯示在開頭的大圖片網址',
+            actions=[
+                MessageTemplateAction(
+                    label='ButtonsTemplate',
+                    text='ButtonsTemplate'
+                ),
+                URITemplateAction(
+                    label='VIDEO1',
+                    uri='影片網址'
+                ),
+                PostbackTemplateAction(
+                    label='postback',
+                    text='postback text',
+                    data='postback1'
+                )
+            ]
+        )
+    )
+    line_bot_api.reply_message(event.reply_token, buttons_template)
+        
 
     return "OK"
 
