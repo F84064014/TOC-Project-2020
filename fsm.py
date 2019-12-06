@@ -49,8 +49,8 @@ class TocMachine(GraphMachine):
             tweet_data = None
             tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
             images_in_tweet_tag = tweet_text_box.find_all("a", {"class": "twitter-timeline-link u-hidden"})
-            #for image_in_tweet_tag in images_in_tweet_tag:
-            tweet_text_box = tweet_text_box.replace(images_in_tweet_tag.text, '')
+            for image_in_tweet_tag in images_in_tweet_tag:
+                tweet_text_box = tweet_text_box.replace(images_in_tweet_tag.text, '')
             tweets_list.append(tweet_text_box.text)
 
         rand_tweet = random.randint(0, len(tweets_list))
