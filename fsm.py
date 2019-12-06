@@ -33,13 +33,13 @@ class TocMachine(GraphMachine):
 
         resp = requests.get('https://old.reddit.com/r/Showerthoughts?sort=top&t=week')
         soup = BeautifulSoup(resp.text, 'html.parser')
-        tweets = soup.find_all('p', {"class": "title"})
-        for tweet in tweets:
-                tweets_list.append(tweet.text)
+        redds = soup.find_all('p', {"class": "title"})
+        for redd in redds:
+                redds_list.append(redd.text)
 
-        rand_tweet = random.randint(0, len(tweets_list))
+        rand_redd = random.randint(0, len(redds_list))
         reply_token = event.reply_token
-        send_text_message(reply_token, tweet_list[rand_tweet])
+        send_text_message(reply_token, redds_list[rand_redd])
         self.go_back()
 
     def on_exit_state1(self):
