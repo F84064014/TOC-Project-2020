@@ -49,7 +49,7 @@ class TocMachine(GraphMachine):
             tweet_data = None
             tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
             images_in_tweet_tag = tweet_text_box.find_all("a", {"class": "twitter-timeline-link u-hidden"})
-            for image_in_tweet_tag in images_in_tweet_tag:
+            #for image_in_tweet_tag in images_in_tweet_tag:
                 #tweet_text = tweet_text.replace(image_in_tweet_tag.text, '')
             tweets_list.append(tweet_text_box.text)
 
