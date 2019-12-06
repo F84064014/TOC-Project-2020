@@ -39,7 +39,7 @@ class TocMachine(GraphMachine):
 
         #rand_redd = random.randint(0, len(redds_list))
         reply_token = event.reply_token
-        #send_text_message(reply_token, redds_list[rand_redd])
+        send_text_message(reply_token, redds_list[2])
         self.go_back()
 
     def on_exit_state1(self):
