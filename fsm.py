@@ -31,8 +31,15 @@ class TocMachine(GraphMachine):
     def on_enter_state1(self, event):
         print("I'm entering state1")
 
+        resp = requests.get('https://old.reddit.com/r/Showerthoughts?sort=top&t=week')
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        tweets = soup.find_all('p', {"class": "title"})
+        for tweet in tweets:
+                tweets_list.append(tweet.text)
+
+        rand_tweet = random.randint(0, len(tweets_list))
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state1")
+        send_text_message(reply_token, tweet_list[rand_tweet])
         self.go_back()
 
     def on_exit_state1(self):
