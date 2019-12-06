@@ -43,7 +43,7 @@ class TocMachine(GraphMachine):
 
         tweets_list = list()
         resp = requests.get('https://twitter.com/FromHappyRock')
-        soup = BeautifulSoup(resp.text, 'html.parser')
+        soup = BeautifulSoup(resp.text, 'lxml')#'html.parser')
         tweets = soup.find_all('li', {"data-item-type": "tweet"})
         for tweet in tweets:
             tweet_data = None
