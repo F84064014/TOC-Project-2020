@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import re
 import json
 import random
-from collections import Counter
+#from collections import Counter
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -23,7 +23,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_rand_news(self, event):
         text = event.message.text
-        return text.lower() == "news"
+        return text.lower() == "rand news"
 
     def is_going_to_state4(self, event):
         text = event.message.text
