@@ -28,6 +28,10 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "exit"
 
+    def is_going_to_state5(self, event):
+        text =event.message.text
+        return text.lower() == "state5"
+
     def on_enter_state1(self, event):
         print("I'm entering state1")
 
@@ -95,4 +99,11 @@ class TocMachine(GraphMachine):
 
     def on_exit_state4(self):
         print("Leaving state4")
+
+    def on_enter_state5(self, event):
+        print("I'm entering state5")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "gay")
+        self.goback()
 
