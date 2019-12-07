@@ -86,7 +86,8 @@ class TocMachine(GraphMachine):
     def on_enter_state5(self, event):
         print("I'm entering state5")
 
+
         reply_token = event.reply_token
-        send_text_message(reply_token, "gay")
+        send_text_message(reply_token, title[rand_title])
         self.goback()
 
