@@ -63,8 +63,8 @@ class TocMachine(GraphMachine):
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
-        title = list()
-        title_url = list()
+        global title = list()
+        global title_url = list()
         for s in stories:
             title.append(s.text)
             title_url.append(s.get('href'))
