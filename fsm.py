@@ -22,7 +22,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state2(self, event):
         text = event.message.text
-        return text.lower().find("search") >= 0
+        return text.lower().find("search ") >= 0
 
     def is_going_to_state3(self, event):
         text = event.message.text
@@ -49,8 +49,10 @@ class TocMachine(GraphMachine):
     def on_enter_state2(self, event):
         print("I'm entering state2")
 
+        search = event.message.text
+        search = search[6:len(search)]
         reply_token = event.reply_token
-        send_text_message(reply_token, "hi")
+        send_text_message(reply_token, search)
         self.go_back()
 
     def on_exit_state2(self):
