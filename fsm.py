@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, send_two_message, set_u, get_u
+from utils import send_text_message, send_two_message
 
 import requests
 from bs4 import BeautifulSoup
@@ -22,7 +22,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state2(self, event):
         text = event.message.text
-        return text.lower() == "search"
+        return text.lower() >= "search"
 
     def is_going_to_state3(self, event):
         text = event.message.text
@@ -69,7 +69,6 @@ class TocMachine(GraphMachine):
             title_url.append(s.get('href'))
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
-        set_u(title_url[rand_title])
         send_two_message(reply_token, title[rand_title], title_url[rand_title])
 
 
@@ -91,6 +90,6 @@ class TocMachine(GraphMachine):
         print("I'm entering state5")
 
         reply_token = event.reply_token
-        send_text_message(reply_token, get_u())
+        send_text_message(reply_token,"hi")
         self.goback()
 
