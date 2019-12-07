@@ -51,8 +51,9 @@ class TocMachine(GraphMachine):
 
         search = event.message.text
         search = search[6:len(search)]
+        url = "https://tw.news.yahoo.com/search?p=="+search
         reply_token = event.reply_token
-        send_text_message(reply_token, search)
+        send_text_message(reply_token, url)
         self.go_back()
 
     def on_exit_state2(self):
