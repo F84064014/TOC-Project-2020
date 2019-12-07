@@ -50,8 +50,8 @@ class TocMachine(GraphMachine):
         print("I'm entering state2")
 
         search = event.message.text
-        search = search[6:len(search)]
-        url = "https://tw.news.yahoo.com/search?p=="+search
+        search = search[7:len(search)]
+        url = "https://tw.news.yahoo.com/search?p="+search
         reply_token = event.reply_token
         send_text_message(reply_token, url)
         self.go_back()
