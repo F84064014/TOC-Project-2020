@@ -68,7 +68,8 @@ class TocMachine(GraphMachine):
             title_url.append(s.get('href'))
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
-        send_two_message(reply_token, title[rand_title], title_url[rand_title])
+        u = title_url[rand_title]
+        send_two_message(reply_token, title[rand_title], u)
 
 
     #def on_exit_state3(self):
