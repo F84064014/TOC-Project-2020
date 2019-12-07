@@ -91,6 +91,6 @@ class TocMachine(GraphMachine):
 
 
         reply_token = event.reply_token
-        send_text_message(reply_token, u)
+        send_text_message(reply_token, 'hi')
         self.goback()
 
