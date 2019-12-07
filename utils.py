@@ -10,7 +10,7 @@ import random
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
 
-global u
+#global u
 
 def send_text_message(reply_token, text):
     line_bot_api = LineBotApi(channel_access_token)
@@ -27,6 +27,9 @@ def send_two_message(reply_token, text1, text2):
 def set_u(text):
     u = text
     return 'OK'
+
+def get_u():
+    return u
 
 """
 def send_image_url(id, img_url):
