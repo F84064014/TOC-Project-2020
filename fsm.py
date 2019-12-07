@@ -21,7 +21,7 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "twitter"
 
-    def is_going_to_rand_news(self, event):
+    def is_going_to_state3(self, event):
         text = event.message.text
         return text.lower() == "rand news"
 
@@ -53,8 +53,8 @@ class TocMachine(GraphMachine):
     def on_exit_state2(self):
         print("Leaving state2")
 
-    def on_enter_rand_news(self, event):
-        print("I'm entering rand_news")
+    def on_enter_state3(self, event):
+        print("I'm entering state3")
 
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
@@ -69,9 +69,9 @@ class TocMachine(GraphMachine):
         send_two_message(reply_token, title[rand_title], title_url[rand_title])
 
 
-    #def on_exit_rand_news(self):
+    #def on_exit_state3(self):
     
-    #    print("Leaving rand_news")
+    #    print("Leaving state3")
 
     def on_enter_state4(self, event):
         print("I'm entering state4")
