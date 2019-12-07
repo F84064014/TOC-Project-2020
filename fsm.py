@@ -9,9 +9,7 @@ import json
 import random
 #from collections import Counter
 
-#global title = list()
-#global title_url = list()
-#global rand_title
+global u
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -63,8 +61,8 @@ class TocMachine(GraphMachine):
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
-        global title = list()
-        global title_url = list()
+        title = list()
+        title_url = list()
         for s in stories:
             title.append(s.text)
             title_url.append(s.get('href'))
