@@ -90,7 +90,6 @@ class TocMachine(GraphMachine):
     def on_enter_state5(self, event):
         print("I'm entering state5")
 
-        u = 'hi'
         reply_token = event.reply_token
         send_text_message(reply_token, get_u())
         self.goback()
