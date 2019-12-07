@@ -9,9 +9,10 @@ import json
 import random
 #from collections import Counter
 
-global u
+
 
 class TocMachine(GraphMachine):
+    global u
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
 
