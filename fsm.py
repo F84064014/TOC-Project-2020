@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, send_two_message
+from utils import send_text_message, send_two_message, set_u, get_u
 
 import requests
 from bs4 import BeautifulSoup
@@ -12,7 +12,7 @@ import random
 
 
 class TocMachine(GraphMachine):
-    global u
+
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
 
@@ -69,8 +69,8 @@ class TocMachine(GraphMachine):
             title_url.append(s.get('href'))
         rand_title = random.randint(0, len(title))
         reply_token = event.reply_token
-        u = title_url[rand_title]
-        send_two_message(reply_token, title[rand_title], u)
+        set_u(title_url[rand_title])
+        send_two_message(reply_token, title[rand_title], title_url[rand_title])
 
 
     #def on_exit_state3(self):
@@ -92,6 +92,6 @@ class TocMachine(GraphMachine):
 
         u = 'hi'
         reply_token = event.reply_token
-        send_text_message(reply_token, u)
+        send_text_message(reply_token, get_u())
         self.goback()
 
