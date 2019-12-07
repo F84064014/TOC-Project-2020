@@ -21,7 +21,7 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "twitter"
 
-    def is_going_to_state3(self, event):
+    def is_going_to_rand_news(self, event):
         text = event.message.text
         return text.lower() == "news"
 
@@ -46,33 +46,15 @@ class TocMachine(GraphMachine):
     def on_enter_state2(self, event):
         print("I'm entering state2")
 
-        tweets_list = list()
-        resp = requests.get('https://twitter.com/FromHappyRock')
-        soup = BeautifulSoup(resp.text, 'html.parser')
-        tweets = soup.find_all('li', {"data-item-type": "tweet"})
-        for tweet in tweets:
-            tweet_data = None
-            try:
-                tweet_text_box = tweet.find("p", {"class": "TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"})
-            except Exception as e:
-                continue
-            images_in_tweet_tag = tweet_text_box.find_all("a", {"class": "twitter-timeline-link u-hidden"})
-            #for image_in_tweet_tag in images_in_tweet_tag:
-            #    tweet_text_box = tweet_text_box.replace(images_in_tweet_tag.text, '')
-            if tweet_text_box:
-                tweets_list.append(tweet_text_box.text)
-
-        rand_tweet = random.randint(0, len(tweets_list))
         reply_token = event.reply_token
-        send_text_message(reply_token, tweets_list[rand_tweet])
-        #ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
+        send_text_message(reply_token, "hi")
         self.go_back()
 
     def on_exit_state2(self):
         print("Leaving state2")
 
-    def on_enter_state3(self, event):
-        print("I'm entering state3")
+    def on_enter_rand_news(self, event):
+        print("I'm entering rand_news")
 
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
@@ -87,9 +69,9 @@ class TocMachine(GraphMachine):
         send_two_message(reply_token, title[rand_title], title_url[rand_title])
 
 
-    #def on_exit_state3(self):
+    #def on_exit_rand_news(self):
     
-    #    print("Leaving state3")
+    #    print("Leaving rand_news")
 
     def on_enter_state4(self, event):
         print("I'm entering state4")
