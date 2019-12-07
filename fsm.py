@@ -22,7 +22,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state2(self, event):
         text = event.message.text
-        return text.lower() == "twitter"
+        return text.lower().find("search")>=0 
 
     def is_going_to_state3(self, event):
         text = event.message.text

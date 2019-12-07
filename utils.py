@@ -24,12 +24,6 @@ def send_two_message(reply_token, text1, text2):
 
     return "OK"
 
-def set_u(text):
-    u = text
-    return 'OK'
-
-def get_u():
-    return u
 
 """
 def send_image_url(id, img_url):
