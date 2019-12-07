@@ -9,9 +9,9 @@ import json
 import random
 #from collections import Counter
 
-title = list()
-title_url = list()
-rand_title
+global title = list()
+global title_url = list()
+global rand_title
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
