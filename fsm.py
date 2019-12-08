@@ -13,10 +13,9 @@ from collections import Counter
 
 class TocMachine(GraphMachine):
 
-    self.data = "test"
-
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
+        self.data = "test"
 
     def is_going_to_state1(self, event):
         text = event.message.text
