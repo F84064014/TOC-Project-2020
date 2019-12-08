@@ -86,7 +86,6 @@ class TocMachine(GraphMachine):
 
 
     #def on_exit_state3(self):
-    
     #    print("Leaving state3"
 
     def on_enter_state4(self, event):
@@ -102,14 +101,16 @@ class TocMachine(GraphMachine):
     def on_enter_state5(self, event):
         print("I'm entering state5")
 
+        target = event.message.text
+        target = target[6:len(target)]
         url = self.cur_url
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         articles = soup.find_all('li', 'ov-a fst')
         c = 0
         for article in articles:
-            c += article.text.count("韓國瑜")
-        m = "the number of 國 is " + str(c)
+            c += article.text.count(target)
+        m = "the number of " + target + " is " + str(c)
         reply_token = event.reply_token
         send_text_message(reply_token, m)
 
