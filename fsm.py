@@ -60,10 +60,10 @@ class TocMachine(GraphMachine):
         sur = list()
         for s in stitles:
             stit.append(s.text)
-        for s in surl:
-            sur.append(s.get('href'))
+        for sr in surl:
+            sur.append(sr.get('href'))
         reply_token = event.reply_token
-        send_text_message(reply_token, stit[0])
+        send_text_message(reply_token, sur[0])
         self.go_back()
 
     def on_exit_state2(self):
