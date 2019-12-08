@@ -105,6 +105,7 @@ class TocMachine(GraphMachine):
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         articles = soup.find_all('a', 'ov-a fst')
+        c = 0
         for article in articles:
             c += article.text.count("Y")
         m = "the number of 國 is " + str(c)
