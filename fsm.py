@@ -126,8 +126,8 @@ class TocMachine(GraphMachine):
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         sart = list()
-        articles = soup.find_all('li', 'ov-a fst')
+        articles = soup.find_all('div', 'caas-body')
         for article in articles:
             sart.append(article.text)
         reply_token = event.reply_token
-        send_text_message(reply_token, url)
+        send_text_message(reply_token, sart[0])
