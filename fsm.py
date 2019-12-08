@@ -54,12 +54,12 @@ class TocMachine(GraphMachine):
         url = "https://tw.news.yahoo.com/search;?p="+search
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        titles = soup.find_all('li', 'ov-a fst')
-        #stit = list()
-        #for stitle in stitles
-        #    stit.append(stitle.text)
-        #reply_token = event.reply_token
-        #send_text_message(reply_token, stit[2])
+        stitles = soup.find_all('li', 'ov-a fst')
+        stit = list()
+        for stitle in stitles:
+            stit.append(stitle.text)
+        reply_token = event.reply_token
+        send_text_message(reply_token, stit[2])
         self.go_back()
 
     def on_exit_state2(self):
