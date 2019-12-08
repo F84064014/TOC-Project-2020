@@ -64,10 +64,9 @@ class TocMachine(GraphMachine):
             sur.append(surl.get('href'))
         reply_token = event.reply_token
         send_two_message(reply_token,stit[0], sur[0])
-        self.go_back()
 
-    def on_exit_state2(self):
-        print("Leaving state2")
+    #def on_exit_state2(self):
+    #    print("Leaving state2")
 
     def on_enter_state3(self, event):
         print("I'm entering state3")
