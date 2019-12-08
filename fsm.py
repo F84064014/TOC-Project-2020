@@ -111,7 +111,7 @@ class TocMachine(GraphMachine):
         url = self.cur_url
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        articles = soup.find_all('li', 'ov-a fst')
+        articles = soup.find_all('div', 'caas-body')
         c = 0
         for article in articles:
             c += article.text.count(target)
