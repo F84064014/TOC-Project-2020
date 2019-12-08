@@ -15,7 +15,7 @@ class TocMachine(GraphMachine):
 
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
-        self.data = "test"
+        self.cur_url = "test"
 
     def is_going_to_state1(self, event):
         text = event.message.text
@@ -52,8 +52,8 @@ class TocMachine(GraphMachine):
 
         search = event.message.text
         search = search[7:len(search)]
-        url = "https://tw.news.search.yahoo.com/search;?p="+search
-        resp = requests.get(url)
+        cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
+        resp = requests.get(cur_url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         surls = soup.find_all('a', class_="thmb")
