@@ -63,7 +63,7 @@ class TocMachine(GraphMachine):
         for s in surl:
             sur.append(s.get('href'))
         reply_token = event.reply_token
-        send_text_message(reply_token, sur[0])
+        send_text_message(reply_token, stit[0])
         self.go_back()
 
     def on_exit_state2(self):
