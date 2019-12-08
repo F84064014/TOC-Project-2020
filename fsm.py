@@ -57,10 +57,9 @@ class TocMachine(GraphMachine):
         stitles = soup.find_all('li', 'ov-a fst')
         stit = list()
         for s in stitles:
-            print('hi')
-        #    stit.append(stitle.text)
+            stit.append(s.text)
         reply_token = event.reply_token
-        send_text_message(reply_token, 'ok')
+        send_text_message(reply_token, stit[2])
         self.go_back()
 
     def on_exit_state2(self):
