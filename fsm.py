@@ -56,10 +56,10 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         stit = list()
-        #for stitle in stitles:
-        #    stit.append(stitle.text)
+        for s in stitles:
+            stit.append(stitle.text)
         reply_token = event.reply_token
-        send_text_message(reply_token, 'ok')
+        send_text_message(reply_token, 'url')
         self.go_back()
 
     def on_exit_state2(self):
