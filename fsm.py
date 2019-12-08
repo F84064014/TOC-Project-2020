@@ -52,8 +52,8 @@ class TocMachine(GraphMachine):
 
         search = event.message.text
         search = search[7:len(search)]
-        cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
-        resp = requests.get(cur_url)
+        self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
+        resp = requests.get(self.cur_url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         surls = soup.find_all('a', class_="thmb")
@@ -111,5 +111,5 @@ class TocMachine(GraphMachine):
             c += article.text.count("韓國瑜")
         m = "the number of 國 is " + str(c)
         reply_token = event.reply_token
-        send_text_message(reply_token, url)
+        send_text_message(reply_token, m)
 
