@@ -121,10 +121,10 @@ class TocMachine(GraphMachine):
     def on_enter_state6(self, event):
         print("I'm entering state6")
 
-        #url = self.cur_url
-        #resp = requests.get(url)
-        #soup = BeautifulSoup(resp.text, 'html.parser')
-        #sart = list()
+        url = self.cur_url
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        sart = list()
         #atricles = soup.find_all('li', 'ov-a fst')
         #for article in articles:
         #    sart.append(article.text)
