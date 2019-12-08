@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import re
 import json
 import random
-#from collections import Counter
+from collections import Counter
 
 
 
@@ -34,7 +34,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state5(self, event):
         text =event.message.text
-        return text.lower() == "state5"
+        return text.lower().find("count ") >= 0
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
@@ -102,7 +102,12 @@ class TocMachine(GraphMachine):
     def on_enter_state5(self, event):
         print("I'm entering state5")
 
+        url = "https://tw.news.search.yahoo.com/search;?p=%E9%9F%93%E5%9C%8B%E7%91%9C"
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        article = soup.find_all('a', 'ov-a fst')
+        c = article.count("國")
         reply_token = event.reply_token
-        send_text_message(reply_token,"hi")
+        send_text_message(reply_token,c)
         self.goback()
 
