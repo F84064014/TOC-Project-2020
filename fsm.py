@@ -15,6 +15,13 @@ class TocMachine(GraphMachine):
 
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
+        self.set_surl()
+
+    def set_surl(self, url_in = "")
+        self.surl = url_in
+    
+    def get_surl(self):
+        return self.surl
 
     def is_going_to_state1(self, event):
         text = event.message.text
