@@ -104,8 +104,9 @@ class TocMachine(GraphMachine):
         url = "https://tw.news.search.yahoo.com/search;?p=%E9%9F%93%E5%9C%8B%E7%91%9C"
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        article = soup.find_all('a', 'ov-a fst')
-        c = article.count("國")
+        articles = soup.find_all('a', 'ov-a fst')
+        for article in articles:
+            c = article.count("國")
         reply_token = event.reply_token
         send_text_message(reply_token,c)
         self.goback()
