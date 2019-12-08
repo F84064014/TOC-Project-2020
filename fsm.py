@@ -109,5 +109,5 @@ class TocMachine(GraphMachine):
             c += article.text.count("Y")
         m = "the number of 國 is " + c.str()
         reply_token = event.reply_token
-        send_text_message(reply_token,m)
+        send_text_message(reply_token,c.str())
 
