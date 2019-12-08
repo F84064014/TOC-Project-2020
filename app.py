@@ -21,7 +21,6 @@ WEBHOOK_VERIFY_TOKEN = os.environ.get(
 )
 
 machine = TocMachine(
-    #url=""
     states=["user", "state1", "state2", "state3", "state4", "state5"],
     transitions=[
         {
@@ -69,6 +68,7 @@ machine = TocMachine(
     initial="user",
     auto_transitions=False,
     show_conditions=True,
+    data="test"
 )
 
 app = Flask(__name__, static_url_path="")
