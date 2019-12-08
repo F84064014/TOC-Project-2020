@@ -52,11 +52,10 @@ class TocMachine(GraphMachine):
         search = event.message.text
         search = search[7:len(search)]
         url = "https://tw.news.search.yahoo.com/search;?p="+search
-        url = "https://tw.news.search.yahoo.com/search;?p=%E9%9F%93%E5%9C%8B%E7%91%9C"
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         #stitles = soup.find_all('li', 'ov-a fst')
-        surls = soup.find_all('a', class_="thmb ")
+        surls = soup.find_all('a', class_="thmb")
         stit = list()
         sur = list()
         #for s in stitles:
