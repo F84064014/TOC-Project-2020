@@ -51,10 +51,10 @@ class TocMachine(GraphMachine):
 
         search = event.message.text
         search = search[7:len(search)]
-        #url = "https://tw.news.yahoo.com/search;?p="+search
-        #resp = requests.get(url)
-        #soup = BeautifulSoup(resp.text, 'html.parser')
-        #titles = soup.find_all('li', 'ov-a fst')
+        url = "https://tw.news.yahoo.com/search;?p="+search
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        titles = soup.find_all('li', 'ov-a fst')
         #stit = list()
         #for stitle in stitles
         #    stit.append(stitle.text)
