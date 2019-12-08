@@ -56,7 +56,8 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         stit = list()
-        #for s in stitles:
+        for s in stitles:
+            print('hi')
         #    stit.append(stitle.text)
         reply_token = event.reply_token
         send_text_message(reply_token, 'ok')
