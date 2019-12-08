@@ -58,8 +58,8 @@ class TocMachine(GraphMachine):
         surl = soup.find_all('a', class_="thmb ")
         stit = list()
         sur = list()
-        for s in stitles:
-            stit.append(s.text)
+        #for s in stitles:
+        #    stit.append(s.text)
         for sr in surl:
             sur.append(sr.get('href'))
         reply_token = event.reply_token
