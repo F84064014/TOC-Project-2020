@@ -37,6 +37,10 @@ class TocMachine(GraphMachine):
         text =event.message.text
         return text.lower().find("count ") >= 0
 
+    def is_going_to_state6(self, event):
+        text = event.message.text
+        return text.lower() == "content"
+
     def on_enter_state1(self, event):
         print("I'm entering state1")
 
@@ -114,3 +118,14 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, m)
 
+    def on_enter_state6(self, event):
+        print("I'm entering state6")
+
+        sart = list()
+        url = self.cur_url
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        atricles = soup.find_all('li', 'ov-a fst')
+        for article in articles:
+            sart.append(article.text)
+        send_text_message(reply_token, sart[0])
