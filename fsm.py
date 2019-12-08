@@ -104,7 +104,7 @@ class TocMachine(GraphMachine):
         url = "https://tw.news.search.yahoo.com/search;?p=%E9%9F%93%E5%9C%8B%E7%91%9C"
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        articles = soup.find_all('a', 'ov-a fst')
+        articles = soup.find_all('li', 'ov-a fst')
         c = 0
         for article in articles:
             c += article.text.count("國")
