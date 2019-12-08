@@ -21,6 +21,7 @@ WEBHOOK_VERIFY_TOKEN = os.environ.get(
 )
 
 machine = TocMachine(
+    url=""
     states=["user", "state1", "state2", "state3", "state4", "state5"],
     transitions=[
         {
