@@ -101,10 +101,10 @@ class TocMachine(GraphMachine):
     def on_enter_state5(self, event):
         print("I'm entering state5")
 
-        #url = "https://tw.news.search.yahoo.com/search;?p=%E9%9F%93%E5%9C%8B%E7%91%9C"
-        #resp = requests.get(url)
-        #soup = BeautifulSoup(resp.text, 'html.parser')
-        #articles = soup.find_all('a', 'ov-a fst')
+        url = "https://tw.news.search.yahoo.com/search;?p=%E9%9F%93%E5%9C%8B%E7%91%9C"
+        resp = requests.get(url)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        articles = soup.find_all('a', 'ov-a fst')
         #for article in articles:
         #    c = article.count("國")
         reply_token = event.reply_token
