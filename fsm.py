@@ -109,5 +109,4 @@ class TocMachine(GraphMachine):
         #    c = article.count("國")
         reply_token = event.reply_token
         send_text_message(reply_token,'ok')
-        self.goback()
 
