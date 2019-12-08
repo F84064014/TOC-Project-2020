@@ -130,4 +130,4 @@ class TocMachine(GraphMachine):
         for article in articles:
             sart.append(article.text)
         reply_token = event.reply_token
-        send_text_message(reply_token, sart[0])
+        send_text_message(reply_token, url)
