@@ -56,8 +56,8 @@ class TocMachine(GraphMachine):
 
         search = event.message.text
         search = search[7:len(search)]
-        self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
-        resp = requests.get(self.cur_url)
+        url = "https://tw.news.search.yahoo.com/search;?p="+search
+        resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         surls = soup.find_all('a', class_="thmb")
@@ -67,6 +67,7 @@ class TocMachine(GraphMachine):
             stit.append(s.text)
         for surl in surls:
             sur.append(surl.get('href'))
+        self.cur_url = sur[0]
         reply_token = event.reply_token
         send_two_message(reply_token,stit[0], sur[0])
 
