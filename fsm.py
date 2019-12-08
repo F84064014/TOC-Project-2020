@@ -54,16 +54,16 @@ class TocMachine(GraphMachine):
         url = "https://tw.news.search.yahoo.com/search;?p="+search
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        #stitles = soup.find_all('li', 'ov-a fst')
+        stitles = soup.find_all('li', 'ov-a fst')
         surls = soup.find_all('a', class_="thmb")
         stit = list()
         sur = list()
-        #for s in stitles:
-        #    stit.append(s.text)
+        for s in stitles:
+            stit.append(s.text)
         for surl in surls:
             sur.append(surl.get('href'))
         reply_token = event.reply_token
-        send_text_message(reply_token, sur[0])
+        send_two_message(reply_token,stit[0], sur[0])
         self.go_back()
 
     def on_exit_state2(self):
