@@ -107,7 +107,7 @@ class TocMachine(GraphMachine):
         articles = soup.find_all('li', 'ov-a fst')
         c = 0
         for article in articles:
-            c += article.text.count("國")
+            c += article.text.count("韓國瑜")
         m = "the number of 國 is " + str(c)
         reply_token = event.reply_token
         send_text_message(reply_token, m)
