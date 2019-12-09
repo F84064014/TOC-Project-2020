@@ -177,7 +177,7 @@ class TocMachine(GraphMachine):
             self.news_tit_list.append(s.text)        
         for i in range(0, len(self.news_url_list)):
         #    t += self.news_tit_list[i]
-            t += '\n'
+            t += '大睪丸'
         #    t += self.news_url_list[i]
         #    t += '\n'
         reply_token = event.reply_token
