@@ -74,9 +74,10 @@ class TocMachine(GraphMachine):
         surls = soup.find_all('a', class_="thmb")
         self.news_url_list.clear()
         self.news_tit_list.clear()
-        for s in stitles:
-            self.news_tit_list.append(s.text)
+        #for s in stitles:
+        #    self.news_tit_list.append(s.text)
         for surl in surls:
+            self.news_tit_list.append(surl.get('title'))
             self.news_url_list.append(surl.get('href'))
         self.cur_url = self.news_url_list[0]
         reply_token = event.reply_token
