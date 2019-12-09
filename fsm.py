@@ -160,10 +160,10 @@ class TocMachine(GraphMachine):
     def on_enter_state_scrapy_search(self, event):
         print("I'm entering state_scrapy_search")
 
-        #search = event.message.text
-        #search = search[7:len(search)]
-        #m = "scraping" + search + "..."
-        #t = "ok"
+        search = event.message.text
+        search = search[7:len(search)]
+        m = "scraping" + search + "..."
+        t = "ok"
         #self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
         #resp = requests.get(self.cur_urlurl)
         #soup = BeautifulSoup(resp.text, 'html.parser')
@@ -177,7 +177,7 @@ class TocMachine(GraphMachine):
         #    t += st.text
         #    t += '\n'
         reply_token = event.reply_token
-        send_two_message(reply_token, "yo", "working?")
+        send_two_message(reply_token, t, "working?")
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
