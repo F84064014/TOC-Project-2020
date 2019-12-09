@@ -82,8 +82,8 @@ Every time `user` state is triggered to `advance` to another state, it will `go_
 	* Input: "go to state_hello"
 		* Reply: "I'm entering state_hello"
 
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
+	* Input: "go to state_search"
+		* Reply: "I'm entering state_search"
 
 ## Deploy
 Setting to deploy webhooks on Heroku.
