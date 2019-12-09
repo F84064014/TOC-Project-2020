@@ -144,7 +144,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state_scrapy_search")
 
         search = event.message.text
-        search = search[14:len(search)]
+        search = search[7:len(search)]
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
         resp = requests.get(self.cur_urlurl)
         soup = BeautifulSoup(resp.text, 'html.parser')
