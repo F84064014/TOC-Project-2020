@@ -46,6 +46,10 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower().find("scrapy ") >= 0
 
+    def is_going_to_state_next(self, event):
+        text = event.message.text
+        return text.lower() == "next"
+
     def on_enter_state_hello(self, event):
         print("I'm entering state_hello")
 
@@ -140,6 +144,13 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, sart[0])
         self.auto_go_back()
 
+    def on_enter_state_next(self, event):
+        print("I'm entering state_next")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "state_next")
+        self.auto_go_back()       
+
     def on_enter_state_scrapy_search(self, event):
         print("I'm entering state_scrapy_search")
 
@@ -158,7 +169,7 @@ class TocMachine(GraphMachine):
         #    t += st.text
         #    t += '\n'
         reply_token = event.reply_token
-        send_two_message(reply_token, m, t)
+        send_two_message(reply_token, m, self.news_url_list[0])
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
