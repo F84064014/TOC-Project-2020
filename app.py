@@ -21,7 +21,7 @@ WEBHOOK_VERIFY_TOKEN = os.environ.get(
 )
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "state3", "state4", "state5", "state6"]#, "state7"],
+    states=["user", "state1", "state2", "state3", "state4", "state5", "state6", "state7"],
     transitions=[
         {
             "trigger": "advance",
@@ -59,12 +59,12 @@ machine = TocMachine(
             "dest": "state6",
             "conditions": "is_going_to_state6",
         },
-        #{
-        #    "trigger": "advance",
-        #    "source": "user",
-        #    "dest": "state7",
-        #    "conditions": "is_going_to_state7",
-        #},
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "state7",
+            "conditions": "is_going_to_state7",
+        },
         {
             "trigger": "go_back", 
             "source": ["state1", "state4", "state5", "state7"], 
@@ -160,6 +160,40 @@ def webhook_handler():
 def show_fsm():
     machine.get_graph().draw("fsm.png", prog="dot", format="png")
     return send_file("fsm.png", mimetype="image/png")
+
+
+@app.route("/test1", methods=["POST"])
+def test1():
+
+    signature = request.headers["X-Line-Signature"]
+    # get request body as text
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
+
+    # parse webhook body
+    try:
+        events = parser.parse(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+
+    # if event is MessageEvent and message is TextMessage, then echo text
+    for event in events:
+        if not isinstance(event, MessageEvent):
+            continue
+        if not isinstance(event.message, TextMessage):
+            continue
+
+        resp = requests.get('https://tw.yahoo.com/')
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        stories = soup.find_all('a', class_='story-title')
+        #send_text_message(event.reply_token, stories.text)
+        for s in stories:
+            line_bot_api.reply_message(
+                    event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
+            )
+                #ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
+
+    return "OK"
 
 
 if __name__ == "__main__":
