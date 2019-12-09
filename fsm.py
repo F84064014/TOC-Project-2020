@@ -171,8 +171,8 @@ class TocMachine(GraphMachine):
         surls = soup.find_all('a', class_="thmb")
         self.news_tit_list.clear()
         self.news_url_list.clear()
-        #for s in surls:
-        #    self.news_url_list.append(s.get('href'))
+        for s in surls:
+            self.news_url_list.append(s.get('href'))
         #for s in stitles
         #    self.news_tit_list.append(s.text)        
         #for i in range(0, len(self.news_url_list))
