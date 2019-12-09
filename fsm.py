@@ -140,15 +140,15 @@ class TocMachine(GraphMachine):
     def on_enter_state7(self, event):
         print("I'm entering state7")
 
-    search = event.message.text
-    search = search[14, len(search)]
-    url = "https://tw.news.search.yahoo.com/search;?p="+search
-    resp = requests.get(url)
-    soup = BeautifulSoup(resp.text, 'html.parser')
-    stitles = soup.find_all('li', 'ov-a fst')
-    surls = soup.find_all('a', class_="thmb")
-    title_ls = ""
-    sur = list()
+    #search = event.message.text
+    #search = search[14, len(search)]
+    #url = "https://tw.news.search.yahoo.com/search;?p="+search
+    #resp = requests.get(url)
+    #soup = BeautifulSoup(resp.text, 'html.parser')
+    #stitles = soup.find_all('li', 'ov-a fst')
+    #surls = soup.find_all('a', class_="thmb")
+    #title_ls = ""
+    #sur = list()
     #for s in stitles:
     #    title_ls += "s\n"
     #for surl in surls:
