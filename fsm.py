@@ -16,6 +16,7 @@ class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
         self.cur_url = "test"
+        self.scrapy_url = list()
 
     def is_going_to_state1(self, event):
         text = event.message.text
@@ -27,7 +28,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state3(self, event):
         text = event.message.text
-        return text.lower() == "rand news"
+        return text.lower() == "rand"
 
     def is_going_to_state4(self, event):
         text = event.message.text
@@ -40,6 +41,10 @@ class TocMachine(GraphMachine):
     def is_going_to_state6(self, event):
         text = event.message.text
         return text.lower() == "content"
+
+    def is_going_to_state7(self, event):
+        text = event.message.text
+        return text.lower().find("scrapy search ")
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
@@ -131,3 +136,22 @@ class TocMachine(GraphMachine):
             sart.append(article.text)
         reply_token = event.reply_token
         send_text_message(reply_token, sart[0])
+
+    def on_enter_state7(self, event):
+        print("I'm entering state7")
+
+    search = event.message.text
+    search = search[14, len(search)]
+    url = "https://tw.news.search.yahoo.com/search;?p="+search
+    resp = requests.get(url)
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    stitles = soup.find_all('li', 'ov-a fst')
+    surls = soup.find_all('a', class_="thmb")
+    title_ls = ""
+    sur = list()
+    for s in stitles:
+        title_ls += "s\n"
+    for surl in surls:
+        self.scrapy_url.append(surl.get('href'))
+    reply_token = event.reply_token
+    send_text_message(reply_token, title_ls)
