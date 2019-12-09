@@ -174,10 +174,11 @@ class TocMachine(GraphMachine):
         for s in surls:
             self.news_url_list.append(s.get('href'))
         for s in stitles:
-            self.news_tit_list.append(s.text)        
-        for i in range(0, len(self.news_url_list)):
-            t += str(self.news_tit_list[i])
-            t += '\n'
+            self.news_tit_list.append(s.text)
+        t = self.news_tit_list[0]        
+        #for i in range(0, len(self.news_url_list)):
+        #    t += self.news_tit_list[i]
+        #    t += '\n'
         #    t += self.news_url_list[i]
         #    t += '\n'
         reply_token = event.reply_token
