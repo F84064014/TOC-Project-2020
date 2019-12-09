@@ -197,3 +197,4 @@ class TocMachine(GraphMachine):
         m = m + str(c)   
         reply_token = event.reply_token
         send_text_message(reply_token, m)
+        self.auto_go_back_scrapy()

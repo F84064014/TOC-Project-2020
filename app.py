@@ -89,6 +89,11 @@ machine = TocMachine(
             "source": ["state_count", "state_content", "state_next", "state_random_news"],
             "dest": "state_search"
         },
+        {
+            "trigger": "auto_go_back_scrapy",
+            "source": ["state_scrapy_count"],
+            "dest": "state_scrapy_search"
+        },        
     ],
     initial="user",
     auto_transitions=False,
