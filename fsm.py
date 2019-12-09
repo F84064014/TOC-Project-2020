@@ -146,17 +146,17 @@ class TocMachine(GraphMachine):
         search = event.message.text
         search = search[7:len(search)]
         m = "scraping" + search + "..."
-        t = ""
+        t = "ok"
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
-        resp = requests.get(self.cur_urlurl)
-        soup = BeautifulSoup(resp.text, 'html.parser')
-        stitles = soup.find_all('li', 'ov-a fst')
-        surls = soup.find_all('a', class_="thmb")
-        for s in surls:
-            self.news_url_list.append(s.get('href'))
-        for s in stitles
-            t += s.text
-            t += '\n'
+        #resp = requests.get(self.cur_urlurl)
+        #soup = BeautifulSoup(resp.text, 'html.parser')
+        #stitles = soup.find_all('li', 'ov-a fst')
+        #surls = soup.find_all('a', class_="thmb")
+        #for s in surls:
+        #    self.news_url_list.append(s.get('href'))
+        #for s in stitles
+        #    t += s.text
+        #    t += '\n'
         reply_token = event.reply_token
         send_two_message(reply_token, m, t)
 
