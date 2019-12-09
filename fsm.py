@@ -119,9 +119,9 @@ class TocMachine(GraphMachine):
         c = 0
         for article in articles:
             c += article.text.count(target)
-        m = "the number of " + target + " is " + str(c)
+        m = ("the number of " + target + " is " + str(c))
         reply_token = event.reply_token
-        send_text_message(reply_token, str(c))
+        send_text_message(reply_token, m)
 
     def on_enter_state6(self, event):
         print("I'm entering state6")
@@ -139,5 +139,7 @@ class TocMachine(GraphMachine):
     def on_enter_state7(self, event):
         print("I'm entering state7")
 
+        search = event.message.text
+        search = search[14:len(search)]
         reply_token = event.reply_token
         send_text_message(reply_token, "gay")
