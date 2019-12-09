@@ -21,7 +21,7 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "是在哈囉?"
 
-    def is_going_to_state_search(self, event):
+    def is_going_to_state2(self, event):
         text = event.message.text
         return text.lower().find("search ") >= 0
 
@@ -45,10 +45,6 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower().find("scrapy search ") >= 0
 
-    def is_going_to_state8(self, event):
-        text = event.message.text
-        return text.lower() == "吃ㄐㄐ"
-
     def on_enter_state_hello(self, event):
         print("I'm entering state_hello")
 
@@ -59,8 +55,8 @@ class TocMachine(GraphMachine):
     def on_exit_state_hello(self):
         print("Leaving state_hello")
 
-    def on_enter_state_search(self, event):
-        print("I'm entering state_search")
+    def on_enter_state2(self, event):
+        print("I'm entering state2")
 
         search = event.message.text
         search = search[7:len(search)]
@@ -79,8 +75,8 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_two_message(reply_token,stit[0], sur[0])
 
-    #def on_exit_state_search(self):
-    #    print("Leaving state_search")
+    #def on_exit_state2(self):
+    #    print("Leaving state2")
 
     def on_enter_state3(self, event):
         print("I'm entering state3")
@@ -141,7 +137,7 @@ class TocMachine(GraphMachine):
             sart.append(article.text)
         reply_token = event.reply_token
         send_text_message(reply_token, sart[0])
-        self.auto_go_back()
+        self.auto_go_back
 
     def on_enter_state7(self, event):
         print("I'm entering state7")
@@ -155,9 +151,3 @@ class TocMachine(GraphMachine):
         surls = soup.find_all('a', class_="thmb")
         reply_token = event.reply_token
         send_text_message(reply_token, "gay")
-
-    def on_enter_state8(self, event):
-        print("I'm entering state8")
-
-        reply_token = event.reply_token
-        send_text_message(reply_token, "state8")
