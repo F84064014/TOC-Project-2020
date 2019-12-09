@@ -121,7 +121,7 @@ class TocMachine(GraphMachine):
             c += article.text.count(target)
         m = "the number of " + target + " is " + str(c)
         reply_token = event.reply_token
-        send_text_message(reply_token, url)
+        send_text_message(reply_token, target)
 
     def on_enter_state6(self, event):
         print("I'm entering state6")
