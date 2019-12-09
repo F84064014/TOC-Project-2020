@@ -44,7 +44,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state_scrapy_search(self, event):
         text = event.message.text
-        return text.lower().find("scrapy search ") >= 0
+        return text.lower().find("scrapy ") >= 0
 
     def on_enter_state_hello(self, event):
         print("I'm entering state_hello")
@@ -154,3 +154,9 @@ class TocMachine(GraphMachine):
             self.news_url_list.append(s.get('href'))
         reply_token = event.reply_token
         send_text_message(reply_token, ("scraping" + search + "..."))
+
+    def on_enter_state_scrapy_count(self, event):
+        print("I'm entering state_scrapy_count")
+
+        reply_token = event.reply_token
+        send_text_message(reply_token, "countS")

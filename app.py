@@ -69,7 +69,7 @@ machine = TocMachine(
             "trigger": "advance",
             "source": "state_scrapy_search",
             "dest": "state_scrapy_count",
-            "conditions": "is_going_to_state_scrapy_count"
+            "conditions": "is_going_to_state_count"
             
         },
         {
