@@ -71,6 +71,11 @@ machine = TocMachine(
             "dest": "user"
         },
         {
+            "trigger": "auto_go_back",
+            "source": ["state5", "state6"],
+            "dest": "state2"
+        },
+        {
             "trigger": "advance",
             "source": "state3",
             "dest": "state3",

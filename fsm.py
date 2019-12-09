@@ -123,6 +123,7 @@ class TocMachine(GraphMachine):
         m = m + str(c)
         reply_token = event.reply_token
         send_text_message(reply_token, m)
+        self.auto_go_back()
 
     def on_enter_state6(self, event):
         print("I'm entering state6")
@@ -136,6 +137,7 @@ class TocMachine(GraphMachine):
             sart.append(article.text)
         reply_token = event.reply_token
         send_text_message(reply_token, sart[0])
+        self.auto_go_back()
 
     def on_enter_state7(self, event):
         print("I'm entering state7")
@@ -143,5 +145,9 @@ class TocMachine(GraphMachine):
         search = event.message.text
         search = search[14:len(search)]
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
+        resp = requests.get(self.cur_urlurl)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        stitles = soup.find_all('li', 'ov-a fst')
+        surls = soup.find_all('a', class_="thmb")
         reply_token = event.reply_token
         send_text_message(reply_token, "gay")
