@@ -152,8 +152,8 @@ class TocMachine(GraphMachine):
         self.cur += 1
         self.cur_url = self.news_url_list[self.cur]
         reply_token = event.reply_token
-        #send_two_message(reply_token, self.news_tit_list[self.cur], self.cur_url)
-        send_two_message(reply_token, "你好", "你是臭假")
+        send_two_message(reply_token, self.news_tit_list[self.cur], self.cur_url)
+        #send_two_message(reply_token, "你好", "你是臭假")
         self.auto_go_back()       
 
     def on_enter_state_scrapy_search(self, event):
