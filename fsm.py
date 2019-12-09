@@ -43,7 +43,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_state7(self, event):
         text = event.message.text
-        return text.lower() == "fsm"
+        return text.lower().find("scrapy search ") >= 0
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
@@ -121,7 +121,7 @@ class TocMachine(GraphMachine):
             c += article.text.count(target)
         m = "the number of " + target + " is " + str(c)
         reply_token = event.reply_token
-        send_text_message(reply_token, target)
+        send_text_message(reply_token, str(c))
 
     def on_enter_state6(self, event):
         print("I'm entering state6")
