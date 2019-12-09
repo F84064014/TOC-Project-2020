@@ -17,6 +17,7 @@ class TocMachine(GraphMachine):
         self.machine = GraphMachine(model=self, **machine_configs)
         self.cur_url = "test"
         self.news_url_list = list()
+        self.news_tit_list = list()
 
     def is_going_to_state_hello(self, event):
         text = event.message.text
@@ -70,15 +71,15 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         surls = soup.find_all('a', class_="thmb")
-        stit = list()
-        sur = list()
+        #stit = list()
+        #sur = list()
         for s in stitles:
-            stit.append(s.text)
+            self.news_tit_list.append(s.text)
         for surl in surls:
-            sur.append(surl.get('href'))
-        self.cur_url = sur[0]
+            self.news_url_list.append(surl.get('href'))
+        self.cur_url = self.news_url_list[0]
         reply_token = event.reply_token
-        send_two_message(reply_token,stit[0], sur[0])
+        send_two_message(reply_token,self.news_tit_list[0], self.news_url_list[0])
 
     #def on_exit_state_search(self):
     #    print("Leaving state_search")
@@ -163,13 +164,14 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         surls = soup.find_all('a', class_="thmb")
+        self.news_url_list.clear()
         for s in surls:
             self.news_url_list.append(s.get('href'))
         #for st in stitles
         #    t += st.text
         #    t += '\n'
         reply_token = event.reply_token
-        send_two_message(reply_token, m, self.news_url_list[0])
+        send_two_message(reply_token, m, "working?")
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
