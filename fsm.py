@@ -141,10 +141,10 @@ class TocMachine(GraphMachine):
         if not articles:
             articles = soup.find_all('p')
         reply_token = event.reply_token
-        sar = list()
-        for article in articles:
-            sar.append(article.text)
-        send_text_message(reply_token, sar[0])
+        #sar = list()
+        #for article in articles:
+        #    sar.append(article.text)
+        send_text_message(reply_token, articles[0].text)
         self.auto_go_back()
 
     def on_enter_state_next(self, event):
