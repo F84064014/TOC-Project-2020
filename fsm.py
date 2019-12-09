@@ -149,9 +149,9 @@ class TocMachine(GraphMachine):
     surls = soup.find_all('a', class_="thmb")
     title_ls = ""
     sur = list()
-    for s in stitles:
-        title_ls += "s\n"
-    for surl in surls:
-        self.scrapy_url.append(surl.get('href'))
+    #for s in stitles:
+    #    title_ls += "s\n"
+    #for surl in surls:
+    #    self.scrapy_url.append(surl.get('href'))
     reply_token = event.reply_token
-    send_text_message(reply_token, title_ls)
+    send_text_message(reply_token, 'ok')
