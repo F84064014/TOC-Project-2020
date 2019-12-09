@@ -86,7 +86,7 @@ machine = TocMachine(
         },
         {
             "trigger": "auto_go_back",
-            "source": ["state_count", "state_content", "state_next"],
+            "source": ["state_count", "state_content", "state_next", "state_random_news"],
             "dest": "state_search"
         },
         {

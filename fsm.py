@@ -99,6 +99,7 @@ class TocMachine(GraphMachine):
         self.cur = random.randint(0, len(self.news_url_list))
         reply_token = event.reply_token
         send_two_message(reply_token, self.news_tit_list[self.cur], self.news_url_list[self.cur])
+        self.auto_go_back()
 
     #def on_exit_state_random_news(self):
     #    print("Leaving state_random_news"
