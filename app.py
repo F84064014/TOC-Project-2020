@@ -21,13 +21,13 @@ WEBHOOK_VERIFY_TOKEN = os.environ.get(
 )
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "state3", "state4", "state5", "state6", "state7"],
+    states=["user", "state_hello", "state2", "state3", "state4", "state5", "state6", "state7"],
     transitions=[
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
+            "dest": "state_hello",
+            "conditions": "is_going_to_state_hello",
         },
         {
             "trigger": "advance",
@@ -67,7 +67,7 @@ machine = TocMachine(
         },
         {
             "trigger": "go_back", 
-            "source": ["state1", "state4", "state5", "state7"], 
+            "source": ["state_hello", "state4", "state5", "state7"], 
             "dest": "user"
         },
         {
