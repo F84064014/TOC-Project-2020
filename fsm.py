@@ -139,7 +139,8 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         articles = soup.find_all('div', 'caas-body')
         reply_token = event.reply_token
-        send_text_message(reply_token, articles[0].text)
+        m = articles[0].text
+        send_text_message(reply_token, m)
         self.auto_go_back()
 
     def on_enter_state_next(self, event):
