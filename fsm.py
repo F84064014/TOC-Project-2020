@@ -139,5 +139,5 @@ class TocMachine(GraphMachine):
     def on_enter_state7(self, event):
         print("I'm entering state7")
 
-        machine.get_graph().draw("fsm.png", prog="dot", format="png")
-        return send_file("fsm.png", mimetype="image/png")
+        reply_token = event.reply_token
+        send_text_message(reply_token, "gay")
