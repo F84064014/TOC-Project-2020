@@ -16,7 +16,7 @@ class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
         self.cur_url = "test"
-        self.scrapy_url = list()
+        #self.scrapy_url = list()
 
     def is_going_to_state1(self, event):
         text = event.message.text
