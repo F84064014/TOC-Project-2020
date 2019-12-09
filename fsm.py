@@ -167,10 +167,10 @@ class TocMachine(GraphMachine):
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
         resp = requests.get(self.cur_url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        #stitles = soup.find_all('li', 'ov-a fst')
-        #surls = soup.find_all('a', class_="thmb")
-        #self.news_tit_list.clear()
-        #self.news_url_list.clear()
+        stitles = soup.find_all('li', 'ov-a fst')
+        surls = soup.find_all('a', class_="thmb")
+        self.news_tit_list.clear()
+        self.news_url_list.clear()
         #for s in surls:
         #    self.news_url_list.append(s.get('href'))
         #for s in stitles
