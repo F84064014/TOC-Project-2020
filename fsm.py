@@ -140,6 +140,8 @@ class TocMachine(GraphMachine):
         articles = soup.find_all('div', 'caas-body')
         if not articles:
             articles = soup.find_all('p')
+        if not articles
+            articles[0].text = "sorry, can't read ths article"
         reply_token = event.reply_token
         #sar = list()
         #for article in articles:
