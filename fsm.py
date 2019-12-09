@@ -150,6 +150,8 @@ class TocMachine(GraphMachine):
         print("I'm entering state_next")
 
         self.cur += 1
+        if self.cur >= len(self.news_url_list):
+            self.cur = 0
         self.cur_url = self.news_url_list[self.cur]
         reply_token = event.reply_token
         send_two_message(reply_token, self.news_tit_list[self.cur], self.cur_url)
