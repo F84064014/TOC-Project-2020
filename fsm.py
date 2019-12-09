@@ -91,15 +91,14 @@ class TocMachine(GraphMachine):
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
-        title = list()
-        title_url = list()
+        self.news_tit_list.clear()
+        self.news_url_list.clear()
         for s in stories:
-            title.append(s.text)
-            title_url.append(s.get('href'))
-        rand_title = random.randint(0, len(title))
+            self.news_tit_list.append(s.text)
+            self.news_url_list.append(s.get('href'))
+        self.cur = random.randint(0, len(self.news_url_list))
         reply_token = event.reply_token
-        send_two_message(reply_token, title[rand_title], title_url[rand_title])
-
+        send_two_message(reply_token, self.news_tit_list[self.cur], self.news_url_list[self.cur])
 
     #def on_exit_state_random_news(self):
     #    print("Leaving state_random_news"
