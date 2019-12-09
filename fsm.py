@@ -154,8 +154,8 @@ class TocMachine(GraphMachine):
         surls = soup.find_all('a', class_="thmb")
         for s in surls:
             self.news_url_list.append(s.get('href'))
-        for st in stitles
-            t += st.text
+        #for st in stitles
+        #    t += st.text
         #    t += '\n'
         reply_token = event.reply_token
         send_two_message(reply_token, m, t)
