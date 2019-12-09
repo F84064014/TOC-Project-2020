@@ -42,9 +42,9 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "content"
 
-    def is_going_to_state7(self, event):
-        text = event.message.text
-        return text.lower().find("scrapy search ")
+    #def is_going_to_state7(self, event):
+    #    text = event.message.text
+    #    return text.lower().find("scrapy search ")
 
     def on_enter_state1(self, event):
         print("I'm entering state1")
@@ -137,8 +137,8 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, sart[0])
 
-    def on_enter_state7(self, event):
-        print("I'm entering state7")
+    #def on_enter_state7(self, event):
+    #    print("I'm entering state7")
 
     #search = event.message.text
     #search = search[14, len(search)]
@@ -153,5 +153,5 @@ class TocMachine(GraphMachine):
     #    title_ls += "s\n"
     #for surl in surls:
     #    self.scrapy_url.append(surl.get('href'))
-    reply_token = event.reply_token
-    send_text_message(reply_token, 'ok')
+    #reply_token = event.reply_token
+    #send_text_message(reply_token, 'ok')
