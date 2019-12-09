@@ -89,12 +89,6 @@ machine = TocMachine(
             "source": ["state_count", "state_content", "state_next", "state_random_news"],
             "dest": "state_search"
         },
-        {
-            "trigger": "advance",
-            "source": "state_random_news",
-            "dest": "state_random_news",
-            "conditions": "is_going_to_state_random_news",
-        },
     ],
     initial="user",
     auto_transitions=False,
