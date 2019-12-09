@@ -16,7 +16,7 @@ class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
         self.cur_url = "test"
-        self.news_list = list()
+        self.news_url_list = list()
 
     def is_going_to_state_hello(self, event):
         text = event.message.text
@@ -138,7 +138,7 @@ class TocMachine(GraphMachine):
             sart.append(article.text)
         reply_token = event.reply_token
         send_text_message(reply_token, sart[0])
-        self.auto_go_back
+        self.auto_go_back()
 
     def on_enter_state_scrapy_search(self, event):
         print("I'm entering state_scrapy_search")
@@ -150,5 +150,7 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         stitles = soup.find_all('li', 'ov-a fst')
         surls = soup.find_all('a', class_="thmb")
+        for s in surls:
+            self.news_url_list.append(s.get('href'))
         reply_token = event.reply_token
-        send_text_message(reply_token, "gay")
+        send_text_message(reply_token, ("scraping" + search + "..."))
