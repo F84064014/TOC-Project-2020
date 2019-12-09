@@ -191,11 +191,11 @@ class TocMachine(GraphMachine):
         target = event.message.text
         target = target[6:len(target)]
         c = 0
-        for s in self.news_url_list
+        for s in self.news_url_list:
             resp = requests.get(s)
             soup = BeautifulSoup(resp.text, 'html.parser')
             articles = soup.find_all('div', 'caas-body')
-            for article in articles
+            for article in articles:
                 c+= article.text.count(target)
         m = "the number of " + target + " is "
         m = m + str(c)   
