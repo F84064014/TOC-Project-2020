@@ -163,21 +163,26 @@ class TocMachine(GraphMachine):
         search = event.message.text
         search = search[7:len(search)]
         m = "scraping" + search + "..."
-        t = "ok"
+        t = ""
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
-        resp = requests.get(self.cur_urlurl)
+        resp = requests.get(self.cur_url)
         soup = BeautifulSoup(resp.text, 'html.parser')
-        #stitles = soup.find_all('li', 'ov-a fst')
-        #surls = soup.find_all('a', class_="thmb")
-        #self.news_tit_list.clear()
-        #self.news_url_list.clear()
-        #for s in surls:
-        #    self.news_url_list.append(s.get('href'))
-        #for st in stitles
-        #    t += st.text
-        #    t += '\n'
+        stitles = soup.find_all('li', 'ov-a fst')
+        surls = soup.find_all('a', class_="thmb")
+        self.news_tit_list.clear()
+        self.news_url_list.clear()
+        for s in surls:
+            self.news_url_list.append(s.get('href'))
+        for s in stitles
+            self.news_tit_list.append(s.text)
+        
+        for i in range(0, len(self.news_url_list))
+            t += self.news_tit_list[i]
+            t += '\n'
+            t += self.news_url_list[i]
+            t += '\n'
         reply_token = event.reply_token
-        send_two_message(reply_token, t, "working?")
+        send_two_message(reply_token, m, t)
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
