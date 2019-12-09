@@ -138,7 +138,7 @@ class TocMachine(GraphMachine):
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         articles = soup.find_all('div', 'caas-body')
-        if !articles:
+        if not articles:
             articles = soup.find_all('p')
         reply_token = event.reply_token
         sar = list()
