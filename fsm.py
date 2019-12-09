@@ -177,16 +177,27 @@ class TocMachine(GraphMachine):
         for s in stitles:
             self.news_tit_list.append(s.text)
         t = self.news_tit_list[0]        
-        for i in range(0, len(self.news_url_list)):
-            temp = self.news_tit_list[i]
-            t += temp
-            temp = self.news_url_list[i]
-            t += temp
-        reply_token = event.reply_token
+        #for i in range(0, len(self.news_url_list)):
+        #    temp = self.news_tit_list[i]
+        #    t += temp
+        #    temp = self.news_url_list[i]
+        #    t += temp
+        #reply_token = event.reply_token
         send_two_message(reply_token, m, t)
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
 
+        target = event.message.text
+        target = target[6:len(target)]
+        c = 0
+        for s in self.news_url_list
+            resp = requests.get(s)
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            articles = soup.find_all('div', 'caas-body')
+            for article in articles
+                c+= article.text.count(target)
+        m = "the number of " + target + " is "
+        m = m + str(c)   
         reply_token = event.reply_token
-        send_text_message(reply_token, "countS")
+        send_text_message(reply_token, m)
