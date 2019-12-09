@@ -145,6 +145,8 @@ class TocMachine(GraphMachine):
 
         search = event.message.text
         search = search[7:len(search)]
+        m = "scraping" + search + "..."
+        t = ""
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
         resp = requests.get(self.cur_urlurl)
         soup = BeautifulSoup(resp.text, 'html.parser')
@@ -152,8 +154,11 @@ class TocMachine(GraphMachine):
         surls = soup.find_all('a', class_="thmb")
         for s in surls:
             self.news_url_list.append(s.get('href'))
+        for s in stitles
+            t += s.text
+            t += '\n'
         reply_token = event.reply_token
-        send_text_message(reply_token, ("scraping" + search + "..."))
+        send_two_message(reply_token, m, t)
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
