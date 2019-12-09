@@ -21,7 +21,7 @@ WEBHOOK_VERIFY_TOKEN = os.environ.get(
 )
 
 machine = TocMachine(
-    states=["user", "state_hello", "state_search", "state3", "state4", "state5", "state6", "state7"],
+    states=["user", "state_hello", "state_search", "state_random_news", "state_exit", "state_count", "state_content", "state_scrapy_search"],
     transitions=[
         {
             "trigger": "advance",
@@ -38,48 +38,48 @@ machine = TocMachine(
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state3",
-            "conditions": "is_going_to_state3",
+            "dest": "state_random_news",
+            "conditions": "is_going_to_state_random_news",
         },
         {
             "trigger": "advance",
-            "source": ["state_search", "state3", "state5", "state6"],
-            "dest": "state4",
-            "conditions": "is_going_to_state4",
-        },
-        {
-            "trigger": "advance",
-            "source": "state_search",
-            "dest": "state5",
-            "conditions": "is_going_to_state5",
+            "source": ["state_search", "state_random_news", "state_count", "state_content"],
+            "dest": "state_exit",
+            "conditions": "is_going_to_state_exit",
         },
         {
             "trigger": "advance",
             "source": "state_search",
-            "dest": "state6",
-            "conditions": "is_going_to_state6",
+            "dest": "state_count",
+            "conditions": "is_going_to_state_count",
+        },
+        {
+            "trigger": "advance",
+            "source": "state_search",
+            "dest": "state_content",
+            "conditions": "is_going_to_state_content",
         },
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state7",
-            "conditions": "is_going_to_state7",
+            "dest": "state_scrapy_search",
+            "conditions": "is_going_to_state_scrapy_search",
         },
         {
             "trigger": "go_back", 
-            "source": ["state_hello", "state4", "state5", "state7"], 
+            "source": ["state_hello", "state_exit", "state_count", "state_scrapy_search"], 
             "dest": "user"
         },
         {
             "trigger": "auto_go_back",
-            "source": ["state5", "state6"],
+            "source": ["state_count", "state_content"],
             "dest": "state_search"
         },
         {
             "trigger": "advance",
-            "source": "state3",
-            "dest": "state3",
-            "conditions": "is_going_to_state3",
+            "source": "state_random_news",
+            "dest": "state_random_news",
+            "conditions": "is_going_to_state_random_news",
         },
     ],
     initial="user",

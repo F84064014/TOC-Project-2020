@@ -25,23 +25,23 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower().find("search ") >= 0
 
-    def is_going_to_state3(self, event):
+    def is_going_to_state_random_news(self, event):
         text = event.message.text
         return text.lower() == "rand news"
 
-    def is_going_to_state4(self, event):
+    def is_going_to_state_exit(self, event):
         text = event.message.text
         return text.lower() == "exit"
 
-    def is_going_to_state5(self, event):
+    def is_going_to_state_count(self, event):
         text =event.message.text
         return text.lower().find("count ") >= 0
 
-    def is_going_to_state6(self, event):
+    def is_going_to_state_content(self, event):
         text = event.message.text
         return text.lower() == "content"
 
-    def is_going_to_state7(self, event):
+    def is_going_to_state_scrapy_search(self, event):
         text = event.message.text
         return text.lower().find("scrapy search ") >= 0
 
@@ -78,8 +78,8 @@ class TocMachine(GraphMachine):
     #def on_exit_state_search(self):
     #    print("Leaving state_search")
 
-    def on_enter_state3(self, event):
-        print("I'm entering state3")
+    def on_enter_state_random_news(self, event):
+        print("I'm entering state_random_news")
 
         resp = requests.get('https://tw.yahoo.com/')
         soup = BeautifulSoup(resp.text, 'html.parser')
@@ -94,21 +94,21 @@ class TocMachine(GraphMachine):
         send_two_message(reply_token, title[rand_title], title_url[rand_title])
 
 
-    #def on_exit_state3(self):
-    #    print("Leaving state3"
+    #def on_exit_state_random_news(self):
+    #    print("Leaving state_random_news"
 
-    def on_enter_state4(self, event):
-        print("I'm entering state4")
+    def on_enter_state_exit(self, event):
+        print("I'm entering state_exit")
 
         reply_token = event.reply_token
         send_text_message(reply_token, "exit state")
         self.go_back()
 
-    def on_exit_state4(self):
-        print("Leaving state4")
+    def on_exit_state_exit(self):
+        print("Leaving state_exit")
 
-    def on_enter_state5(self, event):
-        print("I'm entering state5")
+    def on_enter_state_count(self, event):
+        print("I'm entering state_count")
 
         target = event.message.text
         target = target[6:len(target)]
@@ -125,8 +125,8 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, m)
         self.auto_go_back()
 
-    def on_enter_state6(self, event):
-        print("I'm entering state6")
+    def on_enter_state_content(self, event):
+        print("I'm entering state_content")
 
         url = self.cur_url
         resp = requests.get(url)
@@ -139,8 +139,8 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, sart[0])
         self.auto_go_back
 
-    def on_enter_state7(self, event):
-        print("I'm entering state7")
+    def on_enter_state_scrapy_search(self, event):
+        print("I'm entering state_scrapy_search")
 
         search = event.message.text
         search = search[14:len(search)]
