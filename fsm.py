@@ -140,7 +140,7 @@ class TocMachine(GraphMachine):
         articles = soup.find_all('div', 'caas-body')
         reply_token = event.reply_token
         sar = list()
-        for article in articles
+        for article in articles:
             sar.append(article.text)
         send_text_message(reply_token, sar[0])
         self.auto_go_back()
