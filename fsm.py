@@ -122,8 +122,9 @@ class TocMachine(GraphMachine):
         soup = BeautifulSoup(resp.text, 'html.parser')
         articles = soup.find_all('div', 'caas-body')
         c = 0
-        for article in articles:
-            c += article.text.count(target)
+        #for article in articles:
+        #    c += article.text.count(target)
+        c = articles[0].text.count(target)
         m = "the number of " + target + " is "
         m = m + str(c)
         reply_token = event.reply_token
