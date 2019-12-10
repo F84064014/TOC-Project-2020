@@ -215,6 +215,8 @@ class TocMachine(GraphMachine):
         print("I'm entering state_check")
 
         self.cur = 0
+        t = self.news_tit_list[0]
+        u = self.news_url_list[0]
         reply_token = event.reply_token
-        send_text_message(reply_token, "go to the first news")
+        send_two_message(reply_token, t, u)
         self.auto_go_back()
