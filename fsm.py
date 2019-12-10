@@ -157,7 +157,8 @@ class TocMachine(GraphMachine):
         sar = list()
         for article in articles:
             sar.append(article.text)
-        send_text_message(reply_token, sar[0])
+        t = ''.join(sar)
+        send_text_message(reply_token, t)
         self.auto_go_back()
 
     def on_enter_state_next(self, event):
