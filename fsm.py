@@ -202,8 +202,8 @@ class TocMachine(GraphMachine):
             articles = soup.find_all('div', 'caas-body')
             for article in articles:
                 c+= article.text.count(target)
-        m = "the number of " + target + " is "
-        m = m + str(c)   
+        m = "the number of " + target + " is " + str(c)
+        m = m + " in totally " + len(self.news_url_list) + "reports"  
         reply_token = event.reply_token
         send_text_message(reply_token, m)
         self.auto_go_back_scrapy()
