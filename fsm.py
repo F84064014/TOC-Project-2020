@@ -153,7 +153,7 @@ class TocMachine(GraphMachine):
         print("I'm entering state_next")
 
         self.cur += 1
-        if self.cur >= len(self.news_url_list):
+        if self.cur >= (len(self.news_url_list)-1):
             self.cur = 0
         self.cur_url = self.news_url_list[self.cur]
         reply_token = event.reply_token
