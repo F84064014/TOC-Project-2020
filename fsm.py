@@ -181,7 +181,7 @@ class TocMachine(GraphMachine):
             for s in surls:
                 self.news_url_list.append(s.get('href'))
                 self.news_tit_list.append(s.get('title'))       
-        #x = ''.join(temp)
+        #x = ''.join(tem
         m = "scraping " + search + "..."
         t = "totally " + str(len(self.news_tit_list)) + " is scrapied"
         reply_token = event.reply_token
@@ -197,6 +197,8 @@ class TocMachine(GraphMachine):
             resp = requests.get(s)
             soup = BeautifulSoup(resp.text, 'html.parser')
             articles = soup.find_all('div', 'caas-body')
+            if not articles:
+                articles = soup.find_all('p')
             for article in articles:
                 c+= article.text.count(target)
         m = "the number of " + target + " is " + str(c)
