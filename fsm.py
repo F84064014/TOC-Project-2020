@@ -177,13 +177,12 @@ class TocMachine(GraphMachine):
         self.news_tit_list.clear()
         self.news_url_list.clear()
         for s in surls:
-            temp.append(s.get('href'))
             self.news_url_list.append(s.get('href'))
             self.news_tit_list.append(s.get('title'))       
-        x = ''.join(temp)
+        #x = ''.join(temp)
         m = "scraping " + search + "..."
         reply_token = event.reply_token
-        send_two_message(reply_token, m, x)
+        send_two_message(reply_token, m, self.cur_url)
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
