@@ -173,7 +173,7 @@ class TocMachine(GraphMachine):
         self.news_url_list.clear()
         temp = []
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
-        for i in range(31, -9, -10):
+        for i in range(21, -9, -10):
             url = self.cur_url + "&b=" + str(i)
             resp = requests.get(url)
             soup = BeautifulSoup(resp.text, 'html.parser')
@@ -183,7 +183,7 @@ class TocMachine(GraphMachine):
                 self.news_tit_list.append(s.get('title'))       
         #x = ''.join(tem
         m = "scraping " + search + "..."
-        t = "totally " + str(len(self.news_tit_list)) + " is scrapied"
+        t = "totally " + str(len(self.news_tit_list)) + "articles are scrapied"
         reply_token = event.reply_token
         send_two_message(reply_token, m, t)
 
