@@ -169,7 +169,6 @@ class TocMachine(GraphMachine):
 
         search = event.message.text
         search = search[7:len(search)]
-        m = "scraping " + search + "..."
         temp = []
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
         resp = requests.get(self.cur_url)
@@ -187,6 +186,7 @@ class TocMachine(GraphMachine):
         #    t += temp
         #x = " "
         x = "-".join(self.news_tit_list)
+        m = "scraping " + search + "..."
         reply_token = event.reply_token
         send_text_message(reply_token, m)
 
