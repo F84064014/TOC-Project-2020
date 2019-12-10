@@ -173,7 +173,7 @@ class TocMachine(GraphMachine):
         self.news_url_list.clear()
         temp = []
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
-        for i in range(11, -9, -10):
+        for i in range(31, -9, -10):
             url = self.cur_url + "&b=" + str(i)
             resp = requests.get(url)
             soup = BeautifulSoup(resp.text, 'html.parser')
