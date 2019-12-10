@@ -183,7 +183,7 @@ class TocMachine(GraphMachine):
         x = ''.join(temp)
         m = "scraping " + search + "..."
         reply_token = event.reply_token
-        send_text_message(reply_token, m)
+        send_two_message(reply_token, m, x)
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
