@@ -121,6 +121,10 @@ class TocMachine(GraphMachine):
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
         articles = soup.find_all('div', 'caas-body')
+        if not articles:
+            articles = soup.find_all('p')
+        if not articles:
+            articles = "sorry, can't read ths article"
         c = 0
         for article in articles:
             c += article.text.count(target)
