@@ -43,7 +43,7 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
-            "source": ["state_search", "state_random_news"],
+            "source": ["state_search", "state_random_news", "state_scrapy_search"],
             "dest": "state_exit",
             "conditions": "is_going_to_state_exit",
         },
