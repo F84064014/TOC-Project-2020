@@ -174,7 +174,7 @@ class TocMachine(GraphMachine):
         temp = []
         self.cur_url = "https://tw.news.search.yahoo.com/search;?p="+search
         for i in range(21, -9, -10):
-            url = cur_url + "&b=" + str(i)
+            url = self.cur_url + "&b=" + str(i)
             resp = requests.get(url)
             soup = BeautifulSoup(resp.text, 'html.parser')
             surls = soup.find_all('a', class_="thmb")
