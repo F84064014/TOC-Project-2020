@@ -188,7 +188,7 @@ class TocMachine(GraphMachine):
         str = "\n"
         t = str.join(self.news_tit_list)
         reply_token = event.reply_token
-        send_two_message(reply_token, m, t)
+        send_text_message(reply_token, m)#, t)
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
