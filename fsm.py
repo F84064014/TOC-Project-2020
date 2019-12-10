@@ -189,7 +189,7 @@ class TocMachine(GraphMachine):
             for s in surls:
                 self.news_url_list.append(s.get('href'))
                 self.news_tit_list.append(s.get('title'))       
-        #x = ''.join(te
+        #x = ''.join(
         m = "scraping " + search + "..."
         t = "totally " + str(len(self.news_tit_list)) + " articles are scrapied"
         reply_token = event.reply_token
