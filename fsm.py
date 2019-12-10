@@ -177,9 +177,10 @@ class TocMachine(GraphMachine):
         self.news_tit_list.clear()
         self.news_url_list.clear()
         for s in surls:
+            temp = s.text
             self.news_url_list.append(s.get('href'))
             self.news_tit_list.append(s.get('title'))       
-        x = ''.join(self.news_tit_list)
+        x = ''.join(temp)
         m = "scraping " + search + "..."
         reply_token = event.reply_token
         send_text_message(reply_token, m)
