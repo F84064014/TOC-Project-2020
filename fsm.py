@@ -185,8 +185,8 @@ class TocMachine(GraphMachine):
         #    t += temp
         #    temp.append(self.news_url_list[i])
         #    t += temp
-        str = " "
-        t = str.join(self.news_tit_list)
+        x = " "
+        t = x.join(self.news_tit_list)
         reply_token = event.reply_token
         send_text_message(reply_token, m)#, t)
 
