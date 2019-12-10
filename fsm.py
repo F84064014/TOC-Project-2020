@@ -128,7 +128,8 @@ class TocMachine(GraphMachine):
         if not articles:
             articles = soup.find_all('p')
         if not articles:
-            articles = "sorry, can't read ths article"
+            send_text_message(reply_token, "sorry can't read this html")
+            self.auto_go_back()
         c = 0
         for article in articles:
             c += article.text.count(target)
