@@ -180,13 +180,13 @@ class TocMachine(GraphMachine):
         for s in surls:
             self.news_url_list.append(s.get('href'))
             self.news_tit_list.append(s.get('title'))       
-        #for i in range(0, len(self.news_url_list)):
-        #    temp.append(self.news_tit_list[i])
+        for i in range(0, len(self.news_url_list)):
+            temp.append(self.news_tit_list[i])
         #    t += temp
-        #    temp.append(self.news_url_list[i])
+            temp.append(self.news_url_list[i])
         #    t += temp
-        #reply_token = event.reply_token
-        send_text_message(reply_token, m)
+        reply_token = event.reply_token
+        send_two_message(reply_token, m, tmep[0])
 
     def on_enter_state_scrapy_count(self, event):
         print("I'm entering state_scrapy_count")
