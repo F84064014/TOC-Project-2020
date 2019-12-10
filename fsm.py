@@ -177,7 +177,7 @@ class TocMachine(GraphMachine):
         self.news_tit_list.clear()
         self.news_url_list.clear()
         for s in surls:
-            temp = s.text
+            temp.append(s.text)
             self.news_url_list.append(s.get('href'))
             self.news_tit_list.append(s.get('title'))       
         x = ''.join(temp)
