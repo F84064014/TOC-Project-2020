@@ -52,6 +52,10 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text.lower() == "next"
 
+    def is_going_to_state_check(self, event):
+        text = event.message.text
+        return text.lower() == "check"
+
     def on_enter_state_hello(self, event):
         print("I'm entering state_hello")
 
@@ -183,7 +187,7 @@ class TocMachine(GraphMachine):
                 self.news_tit_list.append(s.get('title'))       
         #x = ''.join(tem
         m = "scraping " + search + "..."
-        t = "totally " + str(len(self.news_tit_list)) + "articles are scrapied"
+        t = "totally " + str(len(self.news_tit_list)) + " articles are scrapied"
         reply_token = event.reply_token
         send_two_message(reply_token, m, t)
 
@@ -206,3 +210,9 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, m)
         self.auto_go_back_scrapy()
+
+    def on_enter_state_check(self, event):
+        print("I'm entering state_check")
+
+        self.cur = 0
+        self.auto_go_back()
