@@ -86,7 +86,7 @@ machine = TocMachine(
         },        
         {
             "trigger": "go_back", 
-            "source": ["state_hello", "state_exit", "state_count", "state_scrapy_search"], 
+            "source": ["state_hello", "state_exit"], 
             "dest": "user"
         },
         {
@@ -210,11 +210,11 @@ def test1():
         soup = BeautifulSoup(resp.text, 'html.parser')
         stories = soup.find_all('a', class_='story-title')
         #send_text_message(event.reply_token, stories.text)
-        for s in stories:
-            line_bot_api.reply_message(
-                    event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
-            )
-                #ImageSendMessage("https://i.imgur.com/eTldj2E.png?1","https://i.imgur.com/eTldj2E.png?1")
+        #for s in stories:
+            #line_bot_api.reply_message(
+            #        event.reply_token, [TextSendMessage(text = s.text), TextSendMessage(text = s.get('href'))]
+            #)
+    ImageSendMessage("https://imgur.com/BejelvG","https://imgur.com/BejelvG")
 
     return "OK"
 
