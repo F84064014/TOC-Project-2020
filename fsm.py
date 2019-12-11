@@ -158,6 +158,8 @@ class TocMachine(GraphMachine):
         for article in articles:
             sar.append(article.text)
         t = ''.join(sar)
+        if not t:
+            send_text_message(reply_token, "sorry can't read this")
         send_text_message(reply_token, t)
         self.auto_go_back()
 
