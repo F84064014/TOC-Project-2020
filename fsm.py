@@ -157,10 +157,11 @@ class TocMachine(GraphMachine):
         sar = list()
         for article in articles:
             sar.append(article.text)
-        t = ''.join(sar)
-        if not t:
-            send_text_message(reply_token, "sorry can't read this")
-        send_text_message(reply_token, t)
+        if(sar):
+            t = ''.join(sar)
+            send_text_message(reply_token, t)
+        else:
+            send_text_message(reply_token, "that's gay")
         self.auto_go_back()
 
     def on_enter_state_next(self, event):
