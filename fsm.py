@@ -169,7 +169,7 @@ class TocMachine(GraphMachine):
             self.cur = 0
         self.cur_url = self.news_url_list[self.cur]
         reply_token = event.reply_token
-        send_two_message(reply_token, len(self.news_tit_list[self.cur]), self.cur)#_url)
+        send_two_message(reply_token, len(self.news_tit_list), self.cur)#_url)
         self.auto_go_back()       
 
     def on_enter_state_scrapy_search(self, event):
